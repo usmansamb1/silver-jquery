@@ -1,0 +1,248 @@
+{
+    "titles": {
+        "approval_workflows": "Approval Workflows",
+        "wallet_approvals": "Wallet Approvals",
+        "payment_approvals": "Payment Approvals",
+        "approval_management": "Approval Management",
+        "approval_history": "Approval History",
+        "workflow_configuration": "Workflow Configuration",
+        "pending_approvals": "Pending Approvals",
+        "my_approvals": "My Approvals",
+        "approval_dashboard": "Approval Dashboard"
+    },
+    
+    "workflow": {
+        "create_workflow": "Create New Workflow",
+        "edit_workflow": "Edit Workflow",
+        "update_workflow": "Update Workflow",
+        "workflow_name": "Workflow Name",
+        "workflow_description": "Workflow Description",
+        "workflow_details": "Workflow Details",
+        "workflow_type": "Workflow Type",
+        "workflow_status": "Workflow Status",
+        "workflow_steps": "Workflow Steps",
+        "workflow_steps_help": "Add approvers in the order they should approve. Drag to reorder.",
+        "active_workflows": "Active Workflows",
+        "inactive_workflows": "Inactive Workflows",
+        "workflow_settings": "Workflow Settings"
+    },
+    
+    "steps": {
+        "add_step": "Add Step",
+        "edit_step": "Edit Step",
+        "delete_step": "Delete Step",
+        "step_name": "Step",
+        "step_order": "Step Order",
+        "step_department": "Responsible Department",
+        "step_role": "Required Role",
+        "step_description": "Step Description",
+        "required_approvers": "Required Approvers Count",
+        "approval_type": "Approval Type",
+        "sequential": "Sequential",
+        "parallel": "Parallel",
+        "any_approver": "Any Approver",
+        "all_approvers": "All Approvers"
+    },
+    
+    "departments": {
+        "finance": "Finance",
+        "validation": "Validation",
+        "activation": "Activation",
+        "it_department": "IT Department",
+        "operations": "Operations",
+        "compliance": "Compliance",
+        "management": "Management"
+    },
+    
+    "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "pending": "Pending",
+        "in_progress": "In Progress",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "cancelled": "Cancelled",
+        "on_hold": "On Hold",
+        "escalated": "Escalated",
+        "completed": "Completed",
+        "returned": "Returned",
+        "awaiting_review": "Awaiting Review"
+    },
+    
+    "actions": {
+        "edit": "Edit",
+        "delete": "Delete",
+        "close": "Close",
+        "cancel": "Cancel",
+        "remove": "Remove",
+        "back_to_list": "Back to List",
+        "select_user": "Select User",
+        "add_approver": "Add Approver",
+        "view_steps": "View Steps",
+        "delete_workflow": "Delete Workflow",
+        "approve": "Approve",
+        "reject": "Reject",
+        "return": "Return",
+        "escalate": "Escalate",
+        "delegate": "Delegate",
+        "reassign": "Reassign",
+        "comment": "Add Comment",
+        "view_details": "View Details",
+        "take_action": "Take Action",
+        "bulk_approve": "Bulk Approve",
+        "bulk_reject": "Bulk Reject"
+    },
+    
+    "wallet_approval": {
+        "deposit_request": "Deposit Request",
+        "withdrawal_request": "Withdrawal Request",
+        "top_up_request": "Top-up Request",
+        "bank_transfer": "Bank Transfer",
+        "bank_lc": "Bank Letter of Credit",
+        "bank_guarantee": "Bank Guarantee",
+        "payment_method": "Payment Method",
+        "requested_amount": "Requested Amount",
+        "current_balance": "Current Balance",
+        "transaction_reference": "Transaction Reference",
+        "bank_details": "Bank Details",
+        "proof_of_payment": "Proof of Payment"
+    },
+    
+    "fields": {
+        "id": "ID",
+        "name": "Name",
+        "description": "Description",
+        "status": "Status",
+        "actions": "Actions",
+        "created_by": "Created By",
+        "created_at": "Created At",
+        "step": "Step",
+        "required": "Required",
+        "can_reject": "Can Reject",
+        "can_edit": "Can Edit",
+        "request_id": "Request ID",
+        "request_date": "Request Date",
+        "requester": "Requester",
+        "requester_name": "Requester Name",
+        "requester_email": "Email Address",
+        "requester_phone": "Phone Number",
+        "company_name": "Company Name",
+        "amount": "Amount",
+        "currency": "Currency",
+        "attachments": "Attachments",
+        "comments": "Comments",
+        "approval_date": "Approval Date",
+        "approved_by": "Approved By",
+        "rejection_reason": "Rejection Reason",
+        "processing_time": "Processing Time",
+        "due_date": "Due Date"
+    },
+    
+    "notifications": {
+        "new_approval_request": "New Approval Request",
+        "approval_reminder": "Approval Reminder",
+        "approval_overdue": "Approval Overdue",
+        "request_approved": "Request Approved",
+        "request_rejected": "Request Rejected",
+        "request_returned": "Request Returned",
+        "step_completed": "Step Completed",
+        "workflow_completed": "Workflow Completed",
+        "action_required": "Action Required",
+        "escalation_notice": "Escalation Notice"
+    },
+    
+    "filters": {
+        "filter_by": "Filter By",
+        "date_range": "Date Range",
+        "status_filter": "Status Filter",
+        "department_filter": "Department Filter",
+        "amount_range": "Amount Range",
+        "priority": "Priority",
+        "high_priority": "High Priority",
+        "medium_priority": "Medium Priority",
+        "low_priority": "Low Priority",
+        "show_all": "Show All",
+        "my_pending": "My Pending",
+        "my_completed": "My Completed"
+    },
+    
+    "validation": {
+        "select_user_required": "Please select a user to add as an approver.",
+        "user_already_added": "This user is already in the approval list.",
+        "at_least_one_approver": "Please add at least one approver to the workflow.",
+        "comment_required": "Comment is required",
+        "rejection_reason_required": "Rejection reason is required",
+        "invalid_amount": "Invalid amount",
+        "attachment_required": "Attachment is required",
+        "approval_limit_exceeded": "Approval limit exceeded",
+        "insufficient_permissions": "Insufficient permissions",
+        "workflow_not_found": "Workflow not found",
+        "step_not_found": "Step not found",
+        "already_processed": "Request already processed"
+    },
+    
+    "messages": {
+        "no_workflows_found": "No approval workflows found.",
+        "no_steps_found": "No steps found for this workflow.",
+        "no_approvers_added": "No approvers added yet. Add at least one approver.",
+        "confirm_delete_workflow": "Are you sure you want to delete the workflow",
+        "delete_workflow_warning": "This action cannot be undone and will remove all steps associated with this workflow.",
+        "error_loading_data": "Error loading workflow data. Please refresh the page and try again.",
+        "error_adding_approver": "Error adding approver. Please try again.",
+        "error_validating_form": "Error validating form. Please check your input and try again.",
+        "approval_success": "Approved successfully",
+        "rejection_success": "Rejected successfully",
+        "workflow_created": "Workflow created successfully",
+        "workflow_updated": "Workflow updated successfully",
+        "step_added": "Step added successfully",
+        "step_removed": "Step removed successfully",
+        "delegation_success": "Delegated successfully",
+        "escalation_success": "Escalated successfully",
+        "bulk_action_completed": "Bulk action completed",
+        "no_pending_approvals": "No pending approvals"
+    },
+    
+    "reports": {
+        "approval_statistics": "Approval Statistics",
+        "processing_time_report": "Processing Time Report",
+        "department_performance": "Department Performance",
+        "approval_trends": "Approval Trends",
+        "bottleneck_analysis": "Bottleneck Analysis",
+        "sla_compliance": "SLA Compliance",
+        "average_processing_time": "Average Processing Time",
+        "approval_rate": "Approval Rate",
+        "rejection_rate": "Rejection Rate",
+        "pending_count": "Pending Count"
+    },
+    
+    "settings": {
+        "auto_escalation": "Auto Escalation",
+        "escalation_time": "Escalation Time (Hours)",
+        "reminder_frequency": "Reminder Frequency",
+        "approval_hierarchy": "Approval Hierarchy",
+        "delegation_rules": "Delegation Rules",
+        "notification_preferences": "Notification Preferences",
+        "email_notifications": "Email Notifications",
+        "sms_notifications": "SMS Notifications",
+        "in_app_notifications": "In-App Notifications",
+        "business_hours": "Business Hours"
+    },
+    
+    "common": {
+        "yes": "Yes",
+        "no": "No"
+    },
+    
+    "audit": {
+        "audit_trail": "Audit Trail",
+        "action_log": "Action Log",
+        "user_actions": "User Actions",
+        "system_actions": "System Actions",
+        "timestamp": "Timestamp",
+        "ip_address": "IP Address",
+        "user_agent": "User Agent",
+        "action_type": "Action Type",
+        "before_value": "Before Value",
+        "after_value": "After Value"
+    }
+}

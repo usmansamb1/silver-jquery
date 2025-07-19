@@ -1,0 +1,238 @@
+{
+    "dashboard": {
+        "title": "Dashboard",
+        "welcome": "Welcome to Dashboard",
+        "overview": "Overview",
+        "last_login": "Last Login",
+        "system_status": "System Status",
+        "quick_stats": "Quick Stats"
+    },
+    "navigation": {
+        "dashboard": "Dashboard",
+        "users": "Users",
+        "customers": "Customers",
+        "services": "Services",
+        "orders": "Orders",
+        "wallets": "Wallets",
+        "approvals": "Approvals",
+        "reports": "Reports",
+        "settings": "Settings",
+        "logout": "Logout",
+        "profile": "Profile",
+        "notifications": "Notifications",
+        "messages": "Messages",
+        "support": "Support",
+        "login": "Login"
+    },
+    "statistics": {
+        "total_users": "Total Users",
+        "active_users": "Active Users",
+        "new_users_today": "New Users Today",
+        "pending_approvals": "Pending Approvals",
+        "total_orders": "Total Orders",
+        "completed_orders": "Completed Orders",
+        "pending_orders": "Pending Orders",
+        "cancelled_orders": "Cancelled Orders",
+        "total_revenue": "Total Revenue",
+        "today_revenue": "Today's Revenue",
+        "wallet_balance": "Wallet Balance",
+        "active_rfid_cards": "Active RFID Cards",
+        "fuel_transactions": "Fuel Transactions",
+        "service_bookings": "Service Bookings"
+    },
+    "quick_actions": {
+        "title": "Quick Actions",
+        "add_user": "Add User",
+        "create_service": "Create Service",
+        "view_approvals": "View Approvals",
+        "generate_report": "Generate Report",
+        "manage_rfid": "Manage RFID Cards",
+        "process_payment": "Process Payment",
+        "send_notification": "Send Notification",
+        "export_data": "Export Data"
+    },
+    "panels": {
+        "user_management": "User Management",
+        "financial_overview": "Financial Overview",
+        "service_management": "Service Management",
+        "approval_workflow": "Approval Workflow",
+        "system_monitoring": "System Monitoring",
+        "activity_log": "Activity Log",
+        "payment_gateway": "Payment Gateway",
+        "rfid_management": "RFID Management"
+    },
+    "user_summary": {
+        "title": "User Summary",
+        "personal_accounts": "Personal Accounts",
+        "company_accounts": "Company Accounts",
+        "verified_users": "Verified Users",
+        "pending_verification": "Pending Verification",
+        "blocked_users": "Blocked Users",
+        "admin_users": "Admin Users",
+        "delivery_agents": "Delivery Agents",
+        "customer_support": "Customer Support"
+    },
+    "financial_summary": {
+        "title": "Financial Summary",
+        "total_deposits": "Total Deposits",
+        "total_withdrawals": "Total Withdrawals",
+        "pending_payments": "Pending Payments",
+        "failed_transactions": "Failed Transactions",
+        "refunds_processed": "Refunds Processed",
+        "commission_earned": "Commission Earned",
+        "payment_methods": "Payment Methods",
+        "bank_transfers": "Bank Transfers",
+        "credit_card_payments": "Credit Card Payments",
+        "credit_payments": "Credit Payments",
+        "mada_payments": "MADA Payments"
+    },
+    "recent_activities": {
+        "title": "Recent Activities",
+        "user_registered": "User Registered",
+        "order_placed": "Order Placed",
+        "payment_received": "Payment Received",
+        "service_activated": "Service Activated",
+        "rfid_assigned": "RFID Assigned",
+        "wallet_topup": "Wallet Top-up",
+        "approval_granted": "Approval Granted",
+        "approval_rejected": "Approval Rejected",
+        "view_all": "View All",
+        "no_activities": "No Activities"
+    },
+    "charts": {
+        "revenue_overview": "Revenue Overview",
+        "user_growth": "User Growth",
+        "service_usage": "Service Usage",
+        "payment_distribution": "Payment Distribution",
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly",
+        "yearly": "Yearly",
+        "custom_range": "Custom Range",
+        "export_chart": "Export Chart"
+    },
+    "filters": {
+        "date_range": "Date Range",
+        "status": "Status",
+        "user_type": "User Type",
+        "service_type": "Service Type",
+        "payment_method": "Payment Method",
+        "apply_filters": "Apply Filters",
+        "reset_filters": "Reset Filters",
+        "from_date": "From Date",
+        "to_date": "To Date"
+    },
+    "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "pending": "Pending",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "completed": "Completed",
+        "cancelled": "Cancelled",
+        "processing": "Processing",
+        "failed": "Failed",
+        "success": "Success"
+    },
+    "alerts": {
+        "low_wallet_balance": "Low Wallet Balance",
+        "pending_approvals_count": "You have :count pending approvals",
+        "system_maintenance": "System Maintenance Scheduled",
+        "payment_gateway_issue": "Payment Gateway Issue",
+        "high_traffic_alert": "High Traffic Alert",
+        "backup_completed": "Backup Completed",
+        "new_user_registrations": "New User Registrations"
+    },
+    "permissions": {
+        "view_dashboard": "View Dashboard",
+        "manage_users": "Manage Users",
+        "manage_services": "Manage Services",
+        "process_approvals": "Process Approvals",
+        "view_reports": "View Reports",
+        "manage_payments": "Manage Payments",
+        "system_settings": "System Settings",
+        "export_data": "Export Data"
+    },
+    "widgets": {
+        "weather": "Weather",
+        "fuel_prices": "Fuel Prices",
+        "exchange_rates": "Exchange Rates",
+        "system_health": "System Health",
+        "server_status": "Server Status",
+        "database_status": "Database Status",
+        "api_status": "API Status",
+        "queue_status": "Queue Status"
+    },
+    "tables": {
+        "id": "ID",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "date": "Date",
+        "amount": "Amount",
+        "status": "Status",
+        "actions": "Actions",
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete",
+        "no_data": "No Data Available",
+        "loading": "Loading..."
+    },
+    "pagination": {
+        "showing": "Showing",
+        "to": "to",
+        "of": "of",
+        "entries": "entries",
+        "previous": "Previous",
+        "next": "Next",
+        "first": "First",
+        "last": "Last"
+    },
+    "search": {
+        "placeholder": "Search...",
+        "advanced_search": "Advanced Search",
+        "search_users": "Search Users",
+        "search_orders": "Search Orders",
+        "search_services": "Search Services",
+        "no_results": "No Results Found",
+        "clear_search": "Clear Search"
+    },
+    "export": {
+        "export_csv": "Export CSV",
+        "export_excel": "Export Excel",
+        "export_pdf": "Export PDF",
+        "select_columns": "Select Columns",
+        "export_all": "Export All",
+        "export_filtered": "Export Filtered"
+    },
+    "notifications": {
+        "mark_read": "Mark as Read",
+        "mark_all_read": "Mark All as Read",
+        "clear_all": "Clear All",
+        "no_notifications": "No Notifications",
+        "new_notification": "New Notification",
+        "notification_settings": "Notification Settings"
+    },
+    "help": {
+        "documentation": "Documentation",
+        "tutorials": "Tutorials",
+        "faq": "FAQ",
+        "contact_support": "Contact Support",
+        "report_issue": "Report Issue",
+        "feature_request": "Feature Request"
+    },
+    "auth": {
+        "remember_me": "Remember Me",
+        "enter_otp": "Enter OTP",
+        "otp_sent_message": "We've sent a 6-digit code to your email",
+        "verify_otp": "Verify OTP",
+        "back_to_login": "Back to Login",
+        "session_alert": "Session Alert",
+        "session_timeout_message": "Your session will expire in",
+        "minutes": "minutes",
+        "keep_logged_in": "Yes, keep me logged in"
+    },
+    "filters": {
+        "all": "All"
+    }
+}

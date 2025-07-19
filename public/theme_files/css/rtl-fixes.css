@@ -1,0 +1,803 @@
+/* Arabic RTL Styling Fixes for JoilYaseeir */
+
+/* Header and Logo positioning */
+body.rtl .header-row {
+    direction: rtl;
+}
+
+body.rtl #logo {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+}
+
+body.rtl .primary-menu-trigger {
+    right: auto;
+    left: 15px;
+}
+
+/* Menu container RTL adjustments */
+body.rtl .menu-container {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .menu-item {
+    text-align: right;
+}
+
+/* CRITICAL FIX: Menu link RTL layout with proper icon positioning */
+body.rtl .menu-link {
+    justify-content: flex-end;
+    text-align: right;
+    padding-right: 1.5rem;
+    padding-left: 1rem;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row-reverse !important; /* Key fix for RTL */
+}
+
+body.rtl .menu-link div {
+    text-align: right;
+    direction: rtl;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex-direction: row-reverse !important; /* Key fix for RTL */
+}
+
+/* Icons positioning for RTL - FIXED */
+body.rtl .menu-link i {
+    margin-right: 8px !important; /* Icons on the RIGHT in RTL */
+    margin-left: 0 !important;
+    order: 1 !important; /* Icons come FIRST in RTL */
+    flex-shrink: 0;
+    width: 16px !important;
+    text-align: center;
+    display: inline-block !important;
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free', 'FontAwesome' !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    color: inherit !important;
+    font-size: inherit !important;
+    vertical-align: middle !important;
+}
+
+/* Text content positioning in RTL */
+body.rtl .menu-link div span,
+body.rtl .menu-link div:not(:has(i)) {
+    order: 2 !important; /* Text comes SECOND in RTL */
+    flex: 1 !important;
+    text-align: right !important;
+}
+
+body.rtl .fas,
+body.rtl .far,
+body.rtl .fab {
+    margin-right: 8px !important; /* Icons on the RIGHT in RTL */
+    margin-left: 0 !important;
+    order: 1 !important;
+}
+
+/* Sub-menu positioning */
+body.rtl .sub-menu-container {
+    direction: rtl;
+    text-align: right;
+    border-left: none;
+    border-right: 2px solid rgba(0, 97, 242, 0.1);
+    margin-left: 0;
+    margin-right: 1rem;
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+/* Profile section RTL */
+body.rtl .order-lg-1,
+body.rtl .text-lg-start {
+    text-align: right !important;
+}
+
+body.rtl .img-circle {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* Form elements RTL */
+body.rtl .form-control,
+body.rtl .form-select,
+body.rtl input,
+body.rtl textarea {
+    text-align: right;
+    direction: rtl;
+}
+
+body.rtl .input-group > .form-control {
+    border-radius: 0 0.375rem 0.375rem 0;
+}
+
+body.rtl .input-group-text {
+    border-radius: 0.375rem 0 0 0.375rem;
+}
+
+/* Button groups RTL */
+body.rtl .btn-group {
+    direction: rtl;
+}
+
+body.rtl .btn-group > .btn:first-child {
+    border-radius: 0 0.375rem 0.375rem 0;
+}
+
+body.rtl .btn-group > .btn:last-child {
+    border-radius: 0.375rem 0 0 0.375rem;
+}
+
+/* Table RTL adjustments */
+body.rtl .table {
+    direction: rtl;
+}
+
+body.rtl .table th,
+body.rtl .table td {
+    text-align: right;
+}
+
+/* Sidebar menu comprehensive RTL fixes */
+body.rtl .side-header .menu-container {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .side-header .menu-item {
+    direction: rtl;
+    text-align: right;
+    margin: 2px 0;
+}
+
+/* CRITICAL FIX: Sidebar menu link RTL layout */
+body.rtl .side-header .menu-link {
+    direction: rtl;
+    text-align: right;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding: 0.75rem 1.5rem 0.75rem 1rem !important;
+    gap: 8px;
+    flex-direction: row-reverse !important; /* Key fix for RTL */
+}
+
+body.rtl .side-header .menu-link div {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex: 1;
+    gap: 8px;
+    direction: rtl;
+    text-align: right;
+    flex-direction: row-reverse !important; /* Key fix for RTL */
+}
+
+/* CRITICAL FIX: Sidebar icon positioning */
+body.rtl .side-header .menu-link i {
+    order: 1 !important; /* Icons come FIRST in RTL */
+    margin-right: 8px !important; /* Icons on the RIGHT in RTL */
+    margin-left: 0 !important;
+    flex-shrink: 0;
+    width: 16px !important;
+    text-align: center;
+    display: inline-block !important;
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free', 'FontAwesome' !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    color: inherit !important;
+    font-size: inherit !important;
+    vertical-align: middle !important;
+}
+
+/* Text content positioning in sidebar RTL */
+body.rtl .side-header .menu-link div span,
+body.rtl .side-header .menu-link div:not(:has(i)) {
+    order: 2 !important; /* Text comes SECOND in RTL */
+    flex: 1 !important;
+    text-align: right !important;
+}
+
+body.rtl .side-header .sub-menu-container {
+    direction: rtl;
+    text-align: right;
+    padding-right: 2rem !important;
+    padding-left: 1rem !important;
+    border-right: 2px solid rgba(0, 97, 242, 0.1) !important;
+    border-left: none !important;
+    margin-right: 1rem !important;
+    margin-left: 0 !important;
+}
+
+body.rtl .side-header .sub-menu-container .menu-link {
+    padding-right: 2.5rem !important;
+    padding-left: 1rem !important;
+}
+
+/* Menu hover effects RTL */
+body.rtl .side-header .menu-item .menu-link:hover {
+    transform: translateX(-5px) !important;
+    transition: all 0.3s ease;
+}
+
+/* Active menu states RTL */
+body.rtl .side-header .menu-item.active > .menu-link,
+body.rtl .side-header .menu-item.menuActive > .menu-link {
+    border-radius: 5px;
+    margin: 2px 0;
+}
+
+/* SELECTIVE REMOVAL - Only remove submenu indicators, NOT Font Awesome icons */
+/* Remove ONLY sub-menu-indicator elements */
+body.rtl .side-header .sub-menu-indicator,
+body.rtl .side-header .menu-link .sub-menu-indicator,
+body.rtl .side-header .menu-item .sub-menu-indicator,
+body.rtl .side-header .menu-container .sub-menu-indicator,
+body.rtl .side-header .primary-menu .sub-menu-indicator,
+body.rtl .side-header .sub-menu-indicator::after,
+body.rtl .side-header .sub-menu-indicator::before,
+body.rtl .side-header .menu-link .sub-menu-indicator::after,
+body.rtl .side-header .menu-link .sub-menu-indicator::before,
+body.rtl .side-header .menu-item .sub-menu-indicator::after,
+body.rtl .side-header .menu-item .sub-menu-indicator::before,
+body.rtl .side-header .menu-link div .sub-menu-indicator,
+body.rtl .side-header .menu-link div .sub-menu-indicator::after,
+body.rtl .side-header .menu-link div .sub-menu-indicator::before,
+body.rtl .side-header .menu-item div .sub-menu-indicator,
+body.rtl .side-header .menu-item div .sub-menu-indicator::after,
+body.rtl .side-header .menu-item div .sub-menu-indicator::before {
+    display: none !important;
+    content: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    transform: none !important;
+}
+
+/* CRITICAL: Ensure Font Awesome icons are ALWAYS visible and properly styled */
+body.rtl .side-header .menu-link i[class*="fa-"],
+body.rtl .side-header .menu-link .fas,
+body.rtl .side-header .menu-link .far,
+body.rtl .side-header .menu-link .fab,
+body.rtl .side-header .menu-link .fa {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    color: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    vertical-align: middle !important;
+    margin-right: 8px !important; /* Icons on the RIGHT in RTL */
+    margin-left: 0 !important;
+    order: 1 !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free', 'FontAwesome' !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Fix for any remaining white squares */
+body.rtl .side-header .menu-link i::before {
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free', 'FontAwesome' !important;
+    font-weight: 900 !important;
+    display: inline-block !important;
+}
+
+/* Language selector RTL */
+body.rtl #languageSelector {
+    text-align: right;
+    direction: rtl;
+}
+
+body.rtl .input-group {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+/* Dark mode toggle RTL */
+body.rtl .body-scheme-toggle {
+    text-align: right;
+}
+
+/* Language switcher container RTL */
+body.rtl .input-group-text {
+    border-radius: 0.375rem 0 0 0.375rem !important;
+}
+
+body.rtl .input-group > .form-control {
+    border-radius: 0 0.375rem 0.375rem 0 !important;
+}
+
+/* Ensure proper spacing for menu items */
+body.rtl .side-header .is-expanded-menu .menu-item {
+    padding: 2px 7px !important;
+    margin: 0 !important;
+    margin-top: 0.25rem !important;
+}
+
+/* Fix for menu item dividers in RTL */
+body.rtl .side-header .menu-item-divider {
+    border-right: none !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+/* Ensure proper z-index for submenus */
+body.rtl .side-header .sub-menu-container {
+    z-index: 1000;
+    position: relative;
+}
+
+/* Profile section in menu RTL */
+body.rtl .side-header .menu-container .order-4 {
+    text-align: right;
+}
+
+body.rtl .side-header .img-circle {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* Mobile menu RTL fixes */
+@media (max-width: 768px) {
+    body.rtl .side-header .primary-menu {
+        right: 0;
+        left: auto;
+    }
+    
+    body.rtl .side-header .menu-container {
+    text-align: right;
+}
+
+    body.rtl .side-header .menu-link {
+        padding: 0.75rem 1.5rem 0.75rem 1rem !important;
+    }
+}
+
+/* Ensure proper text rendering in Arabic */
+body.rtl * {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Arabic font fixes */
+body.rtl .side-header body,
+body.rtl .side-header .menu-link,
+body.rtl .side-header h1, body.rtl .side-header h2, body.rtl .side-header h3, body.rtl .side-header h4, body.rtl .side-header h5, body.rtl .side-header h6 {
+    font-family: 'Noto Kufi Arabic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Arial Unicode MS', 'Microsoft YaHei', 'SimSun', 'SimHei' !important;
+}
+
+/* Additional fixes for specific menu items */
+body.rtl .side-header .menu-link div:has(i) {
+    flex-direction: row-reverse !important;
+    justify-content: flex-end !important;
+}
+
+/* Fix for menu items without icons */
+body.rtl .side-header .menu-link div:not(:has(i)) {
+    justify-content: flex-end !important;
+    text-align: right !important;
+}
+
+/* Override any conflicting styles */
+body.rtl .side-header .menu-link * {
+    direction: rtl !important;
+}
+
+/* Ensure proper flex layout */
+body.rtl .side-header .menu-link,
+body.rtl .side-header .menu-link div {
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Fix for any Bootstrap conflicts */
+body.rtl .side-header .d-flex {
+    direction: rtl !important;
+}
+
+/* Ensure text content is properly aligned */
+body.rtl .side-header .menu-link div:not(:has(i)) {
+    text-align: right !important;
+    justify-content: flex-end !important;
+}
+
+/* CRITICAL: Override any theme CSS that might add submenu indicators */
+body.rtl .side-header .menu-item.mparent > .menu-link > div::after,
+body.rtl .side-header .menu-item.mparent > .menu-link > div::before,
+body.rtl .side-header .menu-item.mparent > .menu-link > i::after,
+body.rtl .side-header .menu-item.mparent > .menu-link > i::before,
+body.rtl .side-header .menu-item.mparent > .menu-link > span::after,
+body.rtl .side-header .menu-item.mparent > .menu-link > span::before,
+body.rtl .side-header .menu-item.mparent > .menu-link > *::after,
+body.rtl .side-header .menu-item.mparent > .menu-link > *::before {
+    display: none !important;
+    content: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+}
+
+/* Fix for any remaining white squares by ensuring proper icon rendering */
+body.rtl .side-header .menu-link i {
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free', 'FontAwesome' !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    display: inline-block !important;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    color: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    vertical-align: middle !important;
+    margin-right: 8px !important; /* Icons on the RIGHT in RTL */
+    margin-left: 0 !important;
+    order: 1 !important;
+}
+
+/* EXCEPT for Font Awesome icons that we want to keep */
+body.rtl .side-header .menu-link i[class*="fa-"]::before,
+body.rtl .side-header .menu-link i.fas::before,
+body.rtl .side-header .menu-link i.far::before,
+body.rtl .side-header .menu-link i.fab::before,
+body.rtl .side-header .menu-link i.fa::before {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free', 'FontAwesome' !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Additional RTL fixes for other components */
+body.rtl .spinner-border,
+body.rtl .spinner-grow {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* Sidebar mobile adjustments */
+@media (max-width: 768px) {
+    body.rtl .primary-menu {
+        right: 0;
+        left: auto;
+    }
+    
+    body.rtl .menu-container {
+        text-align: right;
+    }
+}
+
+/* Language switcher RTL */
+body.rtl .language-switcher {
+    direction: rtl;
+}
+
+body.rtl .language-switcher .dropdown-toggle {
+    text-align: right;
+}
+
+/* Profile dropdown RTL */
+body.rtl .profile-dropdown {
+    right: 0;
+    left: auto;
+}
+
+/* Search form RTL */
+body.rtl .search-form {
+    direction: rtl;
+}
+
+body.rtl .search-form input {
+    text-align: right;
+    padding-right: 2.5rem;
+    padding-left: 0.75rem;
+}
+
+body.rtl .search-form .search-icon {
+    right: auto;
+    left: 0.75rem;
+}
+
+/* Data table RTL fixes */
+body.rtl .dataTables_wrapper {
+    direction: rtl;
+}
+
+body.rtl .dataTables_length,
+body.rtl .dataTables_filter {
+    text-align: right;
+}
+
+body.rtl .dataTables_info {
+    text-align: right;
+}
+
+body.rtl .dataTables_paginate {
+    text-align: left;
+}
+
+/* Filter controls RTL */
+body.rtl .filter-controls {
+    direction: rtl;
+}
+
+body.rtl .filter-chip {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Dashboard cards RTL */
+body.rtl .dashboard-card {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .dashboard-card .card-icon {
+    margin-left: 1rem;
+    margin-right: 0;
+    order: 2;
+}
+
+body.rtl .dashboard-card .card-content {
+    order: 1;
+    text-align: right;
+}
+
+/* Status badges RTL */
+body.rtl .status-badge {
+    direction: rtl;
+}
+
+/* Amount display RTL (keep numbers LTR) */
+body.rtl .amount,
+body.rtl .currency,
+body.rtl .number {
+    direction: ltr;
+    text-align: left;
+    display: inline-block;
+}
+
+/* Date display RTL */
+body.rtl .date {
+    direction: ltr;
+    text-align: left;
+    display: inline-block;
+}
+
+/* Email display RTL */
+body.rtl .email {
+    direction: ltr;
+    text-align: left;
+    display: inline-block;
+}
+
+/* Phone number display RTL */
+body.rtl .phone {
+    direction: ltr;
+    text-align: left;
+    display: inline-block;
+}
+
+/* Map container RTL */
+body.rtl .map-container {
+    direction: ltr;
+}
+
+body.rtl .map-controls {
+    direction: rtl;
+}
+
+/* Header fixes for RTL - addressing image issues */
+body.rtl #content-header {
+    direction: rtl;
+}
+
+body.rtl #content-header .container {
+    direction: rtl;
+}
+
+body.rtl #content-header .row {
+    direction: rtl;
+}
+
+body.rtl .title-block {
+    text-align: right;
+    direction: rtl;
+}
+
+body.rtl .breadcrumb {
+    direction: rtl;
+    justify-content: flex-end;
+}
+
+body.rtl .breadcrumb-item + .breadcrumb-item::before {
+    content: "\\";
+    padding-left: 0;
+    padding-right: 0.5rem;
+}
+
+/* Header social icons and logout RTL */
+body.rtl #top-social {
+    direction: rtl;
+    text-align: left;
+}
+
+body.rtl #top-social li {
+    float: left;
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+body.rtl .ts-icon {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Header layout columns RTL */
+body.rtl .col-sm-5:first-child {
+    text-align: right;
+}
+
+body.rtl .col-sm-2:last-child {
+    text-align: left;
+}
+
+/* Logo positioning fixes for RTL */
+body.rtl #logo {
+    text-align: right;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+body.rtl #logo a {
+    display: inline-block;
+    margin: 0;
+}
+
+body.rtl #logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Header row RTL alignment */
+body.rtl .header-row {
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.rtl .header-row > div {
+    flex-shrink: 0;
+}
+
+/* Primary menu trigger RTL */
+body.rtl .primary-menu-trigger {
+    left: 15px;
+    right: auto;
+}
+
+/* Header search and misc icons RTL */
+body.rtl .header-misc-icon {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+body.rtl .d-flex.mt-4 {
+    justify-content: flex-start;
+    direction: rtl;
+}
+
+/* Content header section RTL */
+body.rtl #content-header .d-flex {
+    direction: rtl;
+}
+
+body.rtl #content-header .justify-content-between {
+    justify-content: space-between;
+}
+
+/* Dashboard cards RTL */
+body.rtl .card {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .card-body {
+    text-align: right;
+}
+
+/* Fix for overlapping logo issue */
+body.rtl .header-row #logo {
+    z-index: 10;
+    position: relative;
+}
+
+body.rtl .primary-menu {
+    z-index: 5;
+}
+
+/* Ensure proper spacing in header columns */
+body.rtl .col-sm-5,
+body.rtl .col-sm-2 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+body.rtl .row.col-sm-12 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Fix menu hover effects for RTL */
+body.rtl .menu-item .menu-link:hover {
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+}
+
+/* Fix active menu states RTL */
+body.rtl .menu-item.active > .menu-link,
+body.rtl .menu-item.menuActive > .menu-link {
+    border-radius: 5px;
+    margin: 2px 0;
+}

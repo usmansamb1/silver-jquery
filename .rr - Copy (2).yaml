@@ -1,0 +1,7 @@
+rpc:
+  listen: tcp://127.0.0.1:6001
+server:
+  command: "php83 ./public/index.php"
+  relay: "pipes"
+http:
+  address: ":8000"

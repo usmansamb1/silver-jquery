@@ -1,0 +1,248 @@
+{
+    "titles": {
+        "approval_workflows": "سير العمل للموافقات",
+        "wallet_approvals": "موافقات المحفظة",
+        "payment_approvals": "موافقات المدفوعات",
+        "approval_management": "إدارة الموافقات",
+        "approval_history": "سجل الموافقات",
+        "workflow_configuration": "تكوين سير العمل",
+        "pending_approvals": "الموافقات المعلقة",
+        "my_approvals": "موافقاتي",
+        "approval_dashboard": "لوحة تحكم الموافقات"
+    },
+    
+    "workflow": {
+        "create_workflow": "إنشاء سير عمل جديد",
+        "edit_workflow": "تعديل سير العمل",
+        "update_workflow": "تحديث سير العمل",
+        "workflow_name": "اسم سير العمل",
+        "workflow_description": "وصف سير العمل",
+        "workflow_details": "تفاصيل سير العمل",
+        "workflow_type": "نوع سير العمل",
+        "workflow_status": "حالة سير العمل",
+        "workflow_steps": "خطوات سير العمل",
+        "workflow_steps_help": "أضف الموافقين بالترتيب الذي يجب أن يوافقوا فيه. اسحب لإعادة الترتيب.",
+        "active_workflows": "سير العمل النشط",
+        "inactive_workflows": "سير العمل غير النشط",
+        "workflow_settings": "إعدادات سير العمل"
+    },
+    
+    "steps": {
+        "add_step": "إضافة خطوة",
+        "edit_step": "تعديل الخطوة",
+        "delete_step": "حذف الخطوة",
+        "step_name": "اسم الخطوة",
+        "step_order": "ترتيب الخطوة",
+        "step_department": "القسم المسؤول",
+        "step_role": "الدور المطلوب",
+        "step_description": "وصف الخطوة",
+        "required_approvers": "عدد الموافقين المطلوب",
+        "approval_type": "نوع الموافقة",
+        "sequential": "تسلسلي",
+        "parallel": "متوازي",
+        "any_approver": "أي موافق",
+        "all_approvers": "جميع الموافقين"
+    },
+    
+    "departments": {
+        "finance": "المالية",
+        "validation": "التحقق",
+        "activation": "التفعيل",
+        "it_department": "تقنية المعلومات",
+        "operations": "العمليات",
+        "compliance": "الامتثال",
+        "management": "الإدارة"
+    },
+    
+    "status": {
+        "active": "نشط",
+        "inactive": "غير نشط",
+        "pending": "معلق",
+        "approved": "موافق عليه",
+        "rejected": "مرفوض",
+        "cancelled": "ملغى",
+        "completed": "مكتمل",
+        "in_progress": "قيد المعالجة",
+        "on_hold": "معلق مؤقتاً",
+        "escalated": "تم التصعيد",
+        "returned": "مُرجع",
+        "awaiting_review": "في انتظار المراجعة"
+    },
+    
+    "actions": {
+        "edit": "تعديل",
+        "delete": "حذف",
+        "close": "إغلاق",
+        "cancel": "إلغاء",
+        "remove": "إزالة",
+        "back_to_list": "العودة للقائمة",
+        "select_user": "اختر مستخدم",
+        "add_approver": "إضافة موافق",
+        "view_steps": "عرض الخطوات",
+        "delete_workflow": "حذف سير العمل",
+        "approve": "موافقة",
+        "reject": "رفض",
+        "comment": "إضافة تعليق",
+        "view_details": "عرض التفاصيل",
+        "return": "إرجاع",
+        "escalate": "تصعيد",
+        "delegate": "تفويض",
+        "reassign": "إعادة تعيين",
+        "take_action": "اتخاذ إجراء",
+        "bulk_approve": "موافقة جماعية",
+        "bulk_reject": "رفض جماعي"
+    },
+    
+    "wallet_approval": {
+        "deposit_request": "طلب إيداع",
+        "withdrawal_request": "طلب سحب",
+        "top_up_request": "طلب شحن المحفظة",
+        "bank_transfer": "تحويل بنكي",
+        "bank_lc": "اعتماد مستندي",
+        "bank_guarantee": "ضمان بنكي",
+        "payment_method": "طريقة الدفع",
+        "requested_amount": "المبلغ المطلوب",
+        "current_balance": "الرصيد الحالي",
+        "transaction_reference": "مرجع المعاملة",
+        "bank_details": "التفاصيل البنكية",
+        "proof_of_payment": "إثبات الدفع"
+    },
+    
+    "fields": {
+        "id": "المعرف",
+        "name": "الاسم",
+        "description": "الوصف",
+        "status": "الحالة",
+        "actions": "الإجراءات",
+        "created_by": "أنشئ بواسطة",
+        "created_at": "تاريخ الإنشاء",
+        "step": "الخطوة",
+        "required": "مطلوب",
+        "can_reject": "يمكن الرفض",
+        "can_edit": "يمكن التعديل",
+        "request_id": "رقم الطلب",
+        "request_date": "تاريخ الطلب",
+        "requester": "مقدم الطلب",
+        "requester_name": "اسم مقدم الطلب",
+        "requester_email": "البريد الإلكتروني",
+        "requester_phone": "رقم الهاتف",
+        "company_name": "اسم الشركة",
+        "amount": "المبلغ",
+        "currency": "العملة",
+        "attachments": "المرفقات",
+        "comments": "التعليقات",
+        "approval_date": "تاريخ الموافقة",
+        "approved_by": "تمت الموافقة بواسطة",
+        "rejection_reason": "سبب الرفض",
+        "processing_time": "وقت المعالجة",
+        "due_date": "تاريخ الاستحقاق"
+    },
+    
+    "notifications": {
+        "new_approval_request": "طلب موافقة جديد",
+        "approval_reminder": "تذكير بالموافقة",
+        "approval_overdue": "موافقة متأخرة",
+        "request_approved": "تمت الموافقة على الطلب",
+        "request_rejected": "تم رفض الطلب",
+        "request_returned": "تم إرجاع الطلب",
+        "step_completed": "تم إكمال الخطوة",
+        "workflow_completed": "تم إكمال سير العمل",
+        "action_required": "إجراء مطلوب",
+        "escalation_notice": "إشعار تصعيد"
+    },
+    
+    "filters": {
+        "filter_by": "تصفية حسب",
+        "date_range": "نطاق التاريخ",
+        "status_filter": "تصفية حسب الحالة",
+        "department_filter": "تصفية القسم",
+        "amount_range": "نطاق المبلغ",
+        "priority": "الأولوية",
+        "high_priority": "أولوية عالية",
+        "medium_priority": "أولوية متوسطة",
+        "low_priority": "أولوية منخفضة",
+        "show_all": "عرض الكل",
+        "my_pending": "معلقاتي",
+        "my_completed": "مكتملاتي"
+    },
+    
+    "validation": {
+        "select_user_required": "يرجى اختيار مستخدم لإضافته كموافق.",
+        "user_already_added": "هذا المستخدم موجود بالفعل في قائمة الموافقة.",
+        "at_least_one_approver": "يرجى إضافة موافق واحد على الأقل لسير العمل.",
+        "comment_required": "التعليق مطلوب",
+        "rejection_reason_required": "سبب الرفض مطلوب",
+        "invalid_amount": "مبلغ غير صالح",
+        "attachment_required": "المرفق مطلوب",
+        "approval_limit_exceeded": "تم تجاوز حد الموافقة",
+        "insufficient_permissions": "صلاحيات غير كافية",
+        "workflow_not_found": "سير العمل غير موجود",
+        "step_not_found": "الخطوة غير موجودة",
+        "already_processed": "تمت معالجة الطلب بالفعل"
+    },
+    
+    "messages": {
+        "no_workflows_found": "لم يتم العثور على سير عمل للموافقات.",
+        "no_steps_found": "لم يتم العثور على خطوات لهذا سير العمل.",
+        "no_approvers_added": "لم يتم إضافة موافقين بعد. أضف موافق واحد على الأقل.",
+        "confirm_delete_workflow": "هل أنت متأكد من أنك تريد حذف سير العمل؟",
+        "delete_workflow_warning": "لا يمكن التراجع عن هذا الإجراء وسيقوم بإزالة جميع الخطوات المرتبطة بهذا سير العمل.",
+        "error_loading_data": "خطأ في تحميل بيانات سير العمل. يرجى تحديث الصفحة والمحاولة مرة أخرى.",
+        "error_adding_approver": "خطأ في إضافة الموافق. يرجى المحاولة مرة أخرى.",
+        "error_validating_form": "خطأ في التحقق من النموذج. يرجى مراجعة البيانات والمحاولة مرة أخرى.",
+        "approval_success": "تمت الموافقة بنجاح",
+        "rejection_success": "تم الرفض بنجاح",
+        "workflow_created": "تم إنشاء سير العمل بنجاح",
+        "workflow_updated": "تم تحديث سير العمل بنجاح",
+        "step_added": "تمت إضافة الخطوة بنجاح",
+        "step_removed": "تمت إزالة الخطوة بنجاح",
+        "delegation_success": "تم التفويض بنجاح",
+        "escalation_success": "تم التصعيد بنجاح",
+        "bulk_action_completed": "تم إكمال الإجراء الجماعي",
+        "no_pending_approvals": "لا توجد موافقات معلقة"
+    },
+    
+    "reports": {
+        "approval_statistics": "إحصائيات الموافقات",
+        "processing_time_report": "تقرير وقت المعالجة",
+        "department_performance": "أداء الأقسام",
+        "approval_trends": "اتجاهات الموافقات",
+        "bottleneck_analysis": "تحليل الاختناقات",
+        "sla_compliance": "الامتثال لاتفاقية مستوى الخدمة",
+        "average_processing_time": "متوسط وقت المعالجة",
+        "approval_rate": "معدل الموافقة",
+        "rejection_rate": "معدل الرفض",
+        "pending_count": "عدد المعلقات"
+    },
+    
+    "settings": {
+        "auto_escalation": "التصعيد التلقائي",
+        "escalation_time": "وقت التصعيد (ساعات)",
+        "reminder_frequency": "تكرار التذكير",
+        "approval_hierarchy": "التسلسل الهرمي للموافقة",
+        "delegation_rules": "قواعد التفويض",
+        "notification_preferences": "تفضيلات الإشعارات",
+        "email_notifications": "إشعارات البريد الإلكتروني",
+        "sms_notifications": "إشعارات الرسائل النصية",
+        "in_app_notifications": "إشعارات داخل التطبيق",
+        "business_hours": "ساعات العمل"
+    },
+    
+    "common": {
+        "yes": "نعم",
+        "no": "لا"
+    },
+    
+    "audit": {
+        "audit_trail": "سجل التدقيق",
+        "action_log": "سجل الإجراءات",
+        "user_actions": "إجراءات المستخدم",
+        "system_actions": "إجراءات النظام",
+        "timestamp": "الطابع الزمني",
+        "ip_address": "عنوان IP",
+        "user_agent": "وكيل المستخدم",
+        "action_type": "نوع الإجراء",
+        "before_value": "القيمة السابقة",
+        "after_value": "القيمة الجديدة"
+    }
+}
