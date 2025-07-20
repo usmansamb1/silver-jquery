@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(php artisan permission:show:*)",
+      "Bash(php:*)",
+      "WebFetch(domain:hyperpay.docs.oppwa.com)",
+      "Bash(rm:*)",
+      "Bash(curl:*)",
+      "Bash(mysql:*)",
+      "Bash(rg:*)",
+      "Bash(ls:*)",
+      "Bash(pkill:*)",
+      "Bash(kill:*)",
+      "WebFetch(domain:www.hyperpay.com)",
+      "Bash(npm run build:*)",
+      "Bash(./vendor/bin/pint:*)",
+      "Bash(composer show:*)",
+      "Bash(sed:*)",
+      "Bash(mkdir:*)",
+      "Bash(cat:*)",
+      "Bash(python3:*)",
+      "Bash(mv:*)"
+    ],
+    "deny": []
+  }
+}

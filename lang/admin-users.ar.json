@@ -1,0 +1,305 @@
+{
+    "title": "إدارة المستخدمين",
+    "page_title": "إدارة المستخدمين",
+    "users_list": "قائمة المستخدمين",
+    "all_users": "جميع المستخدمين",
+    "active_users": "المستخدمون النشطون",
+    "inactive_users": "المستخدمون غير النشطين",
+    "suspended_users": "المستخدمون المعلقون",
+    "new_user": "مستخدم جديد",
+    "add_user": "إضافة مستخدم",
+    "create_user": "إنشاء مستخدم",
+    "edit_user": "تعديل المستخدم",
+    "update_user": "تحديث المستخدم",
+    "delete_user": "حذف المستخدم",
+    "view_user": "عرض المستخدم",
+    "user_details": "تفاصيل المستخدم",
+    "user_profile": "الملف الشخصي",
+    "user_information": "معلومات المستخدم",
+    "personal_information": "المعلومات الشخصية",
+    "account_information": "معلومات الحساب",
+    "contact_information": "معلومات الاتصال",
+    
+    "table": {
+        "id": "المعرف",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "account_type": "نوع الحساب",
+        "role": "الدور",
+        "status": "الحالة",
+        "created_at": "تاريخ الإنشاء",
+        "updated_at": "آخر تحديث",
+        "last_login": "آخر دخول",
+        "actions": "الإجراءات",
+        "wallet_balance": "رصيد المحفظة",
+        "total_bookings": "إجمالي الحجوزات",
+        "total_transactions": "إجمالي المعاملات",
+        "registration_date": "تاريخ التسجيل",
+        "verification_status": "حالة التحقق"
+    },
+    
+    "form": {
+        "first_name": "الاسم الأول",
+        "last_name": "اسم العائلة",
+        "full_name": "الاسم الكامل",
+        "email": "البريد الإلكتروني",
+        "email_placeholder": "أدخل البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "phone_placeholder": "أدخل رقم الهاتف",
+        "password": "كلمة المرور",
+        "password_placeholder": "أدخل كلمة المرور",
+        "confirm_password": "تأكيد كلمة المرور",
+        "confirm_password_placeholder": "أعد إدخال كلمة المرور",
+        "change_password": "تغيير كلمة المرور",
+        "new_password": "كلمة المرور الجديدة",
+        "current_password": "كلمة المرور الحالية",
+        "account_type": "نوع الحساب",
+        "select_account_type": "اختر نوع الحساب",
+        "role": "الدور",
+        "select_role": "اختر الدور",
+        "permissions": "الصلاحيات",
+        "select_permissions": "اختر الصلاحيات",
+        "status": "الحالة",
+        "select_status": "اختر الحالة",
+        "notes": "ملاحظات",
+        "notes_placeholder": "أدخل أي ملاحظات",
+        "profile_image": "صورة الملف الشخصي",
+        "upload_image": "رفع صورة",
+        "remove_image": "إزالة الصورة",
+        "address": "العنوان",
+        "city": "المدينة",
+        "country": "الدولة",
+        "postal_code": "الرمز البريدي"
+    },
+    
+    "account_types": {
+        "personal": "شخصي",
+        "company": "شركة",
+        "government": "حكومي",
+        "all_types": "جميع الأنواع"
+    },
+    
+    "roles": {
+        "admin": "مسؤول",
+        "super_admin": "مسؤول عام",
+        "finance": "المالية",
+        "validation": "التحقق",
+        "activation": "التفعيل",
+        "it": "تقنية المعلومات",
+        "customer": "عميل",
+        "delivery": "التوصيل",
+        "support": "الدعم",
+        "all_roles": "جميع الأدوار"
+    },
+    
+    "permissions": {
+        "view_users": "عرض المستخدمين",
+        "create_users": "إنشاء المستخدمين",
+        "edit_users": "تعديل المستخدمين",
+        "delete_users": "حذف المستخدمين",
+        "manage_roles": "إدارة الأدوار",
+        "manage_permissions": "إدارة الصلاحيات",
+        "view_wallet": "عرض المحفظة",
+        "manage_wallet": "إدارة المحفظة",
+        "view_bookings": "عرض الحجوزات",
+        "manage_bookings": "إدارة الحجوزات",
+        "view_reports": "عرض التقارير",
+        "export_data": "تصدير البيانات"
+    },
+    
+    "status": {
+        "active": "نشط",
+        "inactive": "غير نشط",
+        "suspended": "معلق",
+        "pending": "قيد الانتظار",
+        "verified": "تم التحقق",
+        "unverified": "غير موثق",
+        "blocked": "محظور",
+        "all_statuses": "جميع الحالات"
+    },
+    
+    "filters": {
+        "filter_by": "تصفية حسب",
+        "search": "بحث",
+        "search_placeholder": "ابحث بالاسم أو البريد الإلكتروني أو الهاتف...",
+        "filter_by_role": "تصفية حسب الدور",
+        "filter_by_status": "تصفية حسب الحالة",
+        "filter_by_account_type": "تصفية حسب نوع الحساب",
+        "filter_by_date": "تصفية حسب التاريخ",
+        "date_from": "من تاريخ",
+        "date_to": "إلى تاريخ",
+        "apply_filters": "تطبيق التصفية",
+        "reset_filters": "إعادة تعيين",
+        "export_filtered": "تصدير النتائج المصفاة"
+    },
+    
+    "actions": {
+        "view": "عرض",
+        "edit": "تعديل",
+        "delete": "حذف",
+        "activate": "تفعيل",
+        "deactivate": "إلغاء التفعيل",
+        "suspend": "تعليق",
+        "unsuspend": "إلغاء التعليق",
+        "verify": "تحقق",
+        "unverify": "إلغاء التحقق",
+        "reset_password": "إعادة تعيين كلمة المرور",
+        "send_email": "إرسال بريد إلكتروني",
+        "send_sms": "إرسال رسالة نصية",
+        "view_activity": "عرض النشاط",
+        "view_transactions": "عرض المعاملات",
+        "view_bookings": "عرض الحجوزات",
+        "assign_role": "تعيين دور",
+        "manage_permissions": "إدارة الصلاحيات",
+        "block": "حظر",
+        "unblock": "إلغاء الحظر"
+    },
+    
+    "bulk_actions": {
+        "bulk_actions": "إجراءات جماعية",
+        "select_all": "تحديد الكل",
+        "deselect_all": "إلغاء تحديد الكل",
+        "selected_items": "عناصر محددة",
+        "delete_selected": "حذف المحدد",
+        "activate_selected": "تفعيل المحدد",
+        "deactivate_selected": "إلغاء تفعيل المحدد",
+        "export_selected": "تصدير المحدد"
+    },
+    
+    "statistics": {
+        "user_statistics": "إحصائيات المستخدمين",
+        "total_users": "إجمالي المستخدمين",
+        "active_users": "المستخدمون النشطون",
+        "new_users_today": "مستخدمون جدد اليوم",
+        "new_users_this_week": "مستخدمون جدد هذا الأسبوع",
+        "new_users_this_month": "مستخدمون جدد هذا الشهر",
+        "users_by_role": "المستخدمون حسب الدور",
+        "users_by_account_type": "المستخدمون حسب نوع الحساب",
+        "users_by_status": "المستخدمون حسب الحالة",
+        "registration_trend": "اتجاه التسجيل",
+        "activity_overview": "نظرة عامة على النشاط"
+    },
+    
+    "activity": {
+        "user_activity": "نشاط المستخدم",
+        "recent_activity": "النشاط الأخير",
+        "login_history": "سجل الدخول",
+        "action_history": "سجل الإجراءات",
+        "last_login": "آخر دخول",
+        "login_count": "عدد مرات الدخول",
+        "last_activity": "آخر نشاط",
+        "ip_address": "عنوان IP",
+        "user_agent": "متصفح المستخدم",
+        "activity_type": "نوع النشاط",
+        "activity_description": "وصف النشاط",
+        "activity_date": "تاريخ النشاط"
+    },
+    
+    "company": {
+        "company_details": "تفاصيل الشركة",
+        "company_name": "اسم الشركة",
+        "commercial_registration": "السجل التجاري",
+        "tax_number": "الرقم الضريبي",
+        "company_type": "نوع الشركة",
+        "industry": "الصناعة",
+        "company_size": "حجم الشركة",
+        "authorized_person": "الشخص المفوض",
+        "company_documents": "مستندات الشركة",
+        "cr_document": "وثيقة السجل التجاري",
+        "tax_certificate": "الشهادة الضريبية",
+        "authorization_letter": "خطاب التفويض"
+    },
+    
+    "notifications": {
+        "send_notification": "إرسال إشعار",
+        "notification_type": "نوع الإشعار",
+        "email_notification": "إشعار بريد إلكتروني",
+        "sms_notification": "إشعار رسالة نصية",
+        "push_notification": "إشعار فوري",
+        "notification_subject": "موضوع الإشعار",
+        "notification_message": "رسالة الإشعار",
+        "send_to_user": "إرسال للمستخدم",
+        "send_to_all": "إرسال للجميع",
+        "send_to_role": "إرسال حسب الدور",
+        "notification_history": "سجل الإشعارات"
+    },
+    
+    "messages": {
+        "user_created": "تم إنشاء المستخدم بنجاح",
+        "user_updated": "تم تحديث المستخدم بنجاح",
+        "user_deleted": "تم حذف المستخدم بنجاح",
+        "user_activated": "تم تفعيل المستخدم بنجاح",
+        "user_deactivated": "تم إلغاء تفعيل المستخدم بنجاح",
+        "user_suspended": "تم تعليق المستخدم بنجاح",
+        "user_verified": "تم التحقق من المستخدم بنجاح",
+        "password_reset": "تم إعادة تعيين كلمة المرور بنجاح",
+        "password_sent": "تم إرسال كلمة المرور الجديدة",
+        "role_assigned": "تم تعيين الدور بنجاح",
+        "permissions_updated": "تم تحديث الصلاحيات بنجاح",
+        "notification_sent": "تم إرسال الإشعار بنجاح",
+        "bulk_action_completed": "تم إكمال الإجراء الجماعي بنجاح"
+    },
+    
+    "errors": {
+        "user_not_found": "المستخدم غير موجود",
+        "email_exists": "البريد الإلكتروني مستخدم بالفعل",
+        "phone_exists": "رقم الهاتف مستخدم بالفعل",
+        "invalid_credentials": "بيانات الدخول غير صحيحة",
+        "permission_denied": "ليس لديك صلاحية لهذا الإجراء",
+        "cannot_delete_self": "لا يمكنك حذف حسابك الخاص",
+        "cannot_suspend_self": "لا يمكنك تعليق حسابك الخاص",
+        "user_has_transactions": "لا يمكن حذف المستخدم - لديه معاملات",
+        "invalid_role": "الدور المحدد غير صالح",
+        "password_mismatch": "كلمات المرور غير متطابقة"
+    },
+    
+    "confirmations": {
+        "delete_user": "هل أنت متأكد من حذف هذا المستخدم؟",
+        "suspend_user": "هل أنت متأكد من تعليق هذا المستخدم؟",
+        "activate_user": "هل أنت متأكد من تفعيل هذا المستخدم؟",
+        "deactivate_user": "هل أنت متأكد من إلغاء تفعيل هذا المستخدم؟",
+        "reset_password": "هل أنت متأكد من إعادة تعيين كلمة مرور هذا المستخدم؟",
+        "bulk_delete": "هل أنت متأكد من حذف المستخدمين المحددين؟",
+        "unsaved_changes": "لديك تغييرات غير محفوظة. هل تريد المتابعة؟"
+    },
+    
+    "export": {
+        "export_users": "تصدير المستخدمين",
+        "export_format": "صيغة التصدير",
+        "export_excel": "تصدير إلى Excel",
+        "export_csv": "تصدير إلى CSV",
+        "export_pdf": "تصدير إلى PDF",
+        "export_selected": "تصدير المحدد فقط",
+        "export_all": "تصدير الكل",
+        "export_filtered": "تصدير المصفى",
+        "include_fields": "تضمين الحقول",
+        "exclude_sensitive": "استبعاد البيانات الحساسة"
+    },
+    
+    "import": {
+        "import_users": "استيراد المستخدمين",
+        "upload_file": "رفع ملف",
+        "download_template": "تحميل القالب",
+        "file_format": "صيغة الملف",
+        "csv_format": "ملف CSV",
+        "excel_format": "ملف Excel",
+        "mapping_fields": "ربط الحقول",
+        "preview_import": "معاينة الاستيراد",
+        "start_import": "بدء الاستيراد",
+        "import_progress": "تقدم الاستيراد",
+        "import_completed": "اكتمل الاستيراد"
+    },
+    
+    "pagination": {
+        "showing": "عرض",
+        "to": "إلى",
+        "of": "من",
+        "entries": "مدخلات",
+        "per_page": "لكل صفحة",
+        "first": "الأولى",
+        "last": "الأخيرة",
+        "previous": "السابق",
+        "next": "التالي"
+    }
+}

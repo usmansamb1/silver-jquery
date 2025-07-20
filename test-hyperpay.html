@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HyperPay Integration Test</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>HyperPay Integration Test</h1>
+    
+    <div id="test-results">
+        <h2>Test Results:</h2>
+        <div id="log"></div>
+    </div>
+    
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            logDiv.innerHTML += '<p>' + new Date().toLocaleTimeString() + ': ' + message + '</p>';
+            console.log(message);
+        }
+        
+        // Test HyperPay widget loading
+        function testHyperPayWidget() {
+            log('Testing HyperPay widget loading...');
+            
+            // Create a test checkout ID (this would normally come from the backend)
+            const testCheckoutId = 'test123';
+            const baseUrl = 'https://eu-test.oppwa.com/';
+            
+            // Create widget HTML similar to what's generated in the backend
+            const widgetHtml = `
+                <form action='/test' class='paymentWidgets' data-brands='VISA MASTER'></form>
+                <script>
+                    var wpwlOptions = {
+                        style: 'card',
+                        locale: 'en',
+                        showPlaceholders: true,
+                        brandDetection: true,
+                        billingAddress: {
+                            country: 'SA',
+                            state: '',
+                            city: '',
+                            postcode: '',
+                            street1: '',
+                            street2: ''
+                        }
+                    }
+                </script>
+                <script src='${baseUrl}v1/paymentWidgets.js?checkoutId=${testCheckoutId}'></script>
+            `;
+            
+            // Test if the widget script can be loaded
+            const script = document.createElement('script');
+            script.src = baseUrl + 'v1/paymentWidgets.js?checkoutId=' + testCheckoutId;
+            script.onload = function() {
+                log('✅ HyperPay widget script loaded successfully');
+            };
+            script.onerror = function() {
+                log('❌ Failed to load HyperPay widget script');
+            };
+            
+            document.head.appendChild(script);
+            
+            // Test the configuration values
+            log('Testing HyperPay configuration...');
+            log('Base URL: ' + baseUrl);
+            log('Test Checkout ID: ' + testCheckoutId);
+        }
+        
+        // Run tests when page loads
+        window.onload = function() {
+            log('Starting HyperPay integration tests...');
+            testHyperPayWidget();
+        };
+    </script>
+</body>
+</html>
