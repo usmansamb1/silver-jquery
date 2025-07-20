@@ -975,13 +975,6 @@ window.addEventListener('load', function() {
                                         <div><i class="fas fa-file-alt"></i> {{ __('Usage Reports') }}</div>
                                     </a>
                                 </li>
-                                @role('admin|finance')
-                                <li class="menu-item">
-                                    <a class="menu-link LoadingUi" href="#">
-                                        <div><i class="fas fa-money-bill-wave"></i> {{ __('Financial Reports') }}</div>
-                                    </a>
-                                </li>
-                                @endrole
                                 <li class="menu-item">
                                     <a class="menu-link LoadingUi" href="#">
                                         <div><i class="fas fa-file-excel"></i> {{ __('Excel Report') }}</div>
