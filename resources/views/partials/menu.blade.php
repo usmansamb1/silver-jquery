@@ -937,6 +937,14 @@ window.addEventListener('load', function() {
                                 </div>
                             </a>
                         </li>
+                        <li class="menu-item {{ request()->routeIs('admin.test.sms') ? 'menuActive' : '' }}">
+                            <a class="menu-link LoadingUi" href="{{ route('admin.test.sms') }}">
+                                <div>
+                                    <i class="fas fa-sms"></i>
+                                    {{ __('SMS Tester') }}
+                                </div>
+                            </a>
+                        </li>
                         @endrole
 
                         {{-- <li class="menu-item mparent {{ request()->routeIs('notifications.*') ? 'active' : '' }}" id="notificationManage">
