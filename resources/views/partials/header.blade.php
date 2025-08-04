@@ -9,7 +9,7 @@
                         <div class="col-sm-5">
                             <h6 class="fs-3 fw-semibold mb-0">
                                 <div class="title-block">
-                                    <h4 class="fs-3 fw-esmibold mb-0">{{ __('YASEEIR ONLINE') }}</h4>
+                                    <h4 class="fs-3 fw-esmibold mb-0">{{ __('FuelApp Online') }}</h4>
                                     <span>
                                     <nav aria-label="breadcrumb" class="d-none d-lg-block">
                                         <ol class="breadcrumb" style="--bs-breadcrumb-divider: '/';">

@@ -547,9 +547,9 @@ window.addEventListener('load', function() {
             <div class="header-row">
 
                 <div id="logo" class="py-2 py-xl-3 mx-xl-0 w-auto align-self-center LoadingUi">
-                    <a href="/" class="d-block text-center">
+                    <a href="/home" class="d-block text-center">
                         <div class="logo-container" style="background-color: white; border-radius: 12px; padding: 8px 12px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 0 auto;">
-                            <img src="{{ asset('theme_files/imgs/yaseeir-smal-new-logo5-trans.png') }}" alt="Yaseeir Logo" style="height:70px; width: auto; max-width: 100%; display: block;">
+                            <img src="{{ asset('theme_files/imgs/yaseeir-smal-new-logo6.png') }}" alt="Yaseeir Logo" style="height:80px; width: auto; max-width: 100%; display: block;">
                         </div>
                     </a>
                 </div>
@@ -937,14 +937,8 @@ window.addEventListener('load', function() {
                                 </div>
                             </a>
                         </li>
-                        <li class="menu-item {{ request()->routeIs('admin.test.sms') ? 'menuActive' : '' }}">
-                            <a class="menu-link LoadingUi" href="{{ route('admin.test.sms') }}">
-                                <div>
-                                    <i class="fas fa-sms"></i>
-                                    {{ __('SMS Tester') }}
-                                </div>
-                            </a>
-                        </li>
+                         
+                         
                         @endrole
 
                         {{-- <li class="menu-item mparent {{ request()->routeIs('notifications.*') ? 'active' : '' }}" id="notificationManage">
@@ -962,7 +956,7 @@ window.addEventListener('load', function() {
                                     </a>
                                 </li>
                                 @role('admin')
-                                <li class="menu-item">
+                                 <li class="menu-item">
                                     <a class="menu-link LoadingUi" href="#">
                                         <div>
                                             <i class="fas fa-cog"></i> Configure Notifications

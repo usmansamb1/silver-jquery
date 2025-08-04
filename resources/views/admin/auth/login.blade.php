@@ -6,7 +6,7 @@
 <div class="login-container">
     <div class="login-box animate__animated animate__fadeIn">
         <div class="text-center mb-4">
-            <img src="{{ asset('theme_files/imgs/yaseeir-smal-new-logo5-trans.png') }}" alt="Yaseir Logo" class="logo-img animate__animated animate__pulse">
+            <img src="{{ asset('theme_files/imgs/yaseeir-smal-new-logo6.png') }}" alt="Yaseir Logo" class="logo-img animate__animated animate__pulse">
         </div>
         
         <h4 class="text-center mb-4">{{ __('admin-dashboard.navigation.login') }}</h4>

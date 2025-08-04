@@ -90,7 +90,7 @@
                                     </div>
                                 </div> </div>
                             <!-- language buttons -->
-                            <div class="col-sm-12 mt-2 text-center "> <img src="{{ asset('theme_files/imgs/yaseeir-smal-new-logo5.jpg') }}" class="img-responsive" ></div>
+                            <div class="col-sm-12 mt-2 text-center "> <img src="{{ asset('theme_files/imgs/yaseeir-smal-new-logo6.png') }}" class="img-responsive" ></div>
                             <!-- logo -->
 
                         </div>

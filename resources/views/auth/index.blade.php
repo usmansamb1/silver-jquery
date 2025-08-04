@@ -871,7 +871,7 @@
                                 </div> 
                                 </div>
                             <!-- language buttons -->
-                            <div class="col-sm-12 mt-3 text-center "> <img src="{{ asset('theme_files/imgs/yaseeir-smal-new-logo5.jpg') }}" class="img-responsive" ></div>
+                            <div class="col-sm-12 mt-3 text-center "> <img src="{{ asset('theme_files/imgs/yaseeir-smal-new-logo6.jpg') }}" class="img-responsive" style="max-width: 350px;" ></div>
                             <!-- logo -->
                         
 
