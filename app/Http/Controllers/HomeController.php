@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ServiceBooking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\LogHelper;
@@ -21,8 +22,13 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $wallet = $user->wallet;
-        $currentBalance = $wallet ? $wallet->balance : 0;
-        return view('home.index', compact('user','currentBalance'));
+        // get total service bookings with status "delivered"
+        $totalServiceBookings = ServiceBooking::where('user_id', $user->id)->where('status', 'approved')->where('delivery_status', 'delivered')->count();
+        //  get total service bookings with status "pending"
+            $totalPendingServiceBookings = ServiceBooking::where('user_id', $user->id)->where('status', 'approved')->where('delivery_status',null)->count();
+        
+            $currentBalance = $wallet ? $wallet->balance : 0;
+        return view('home.index', compact('user','currentBalance','totalServiceBookings','totalPendingServiceBookings'));
     }
 
     // Show the user home page with account information.

@@ -429,7 +429,8 @@ class RfidController extends Controller
                 'vehicles' => 'required|array|min:1',
                 'vehicles.*' => 'exists:vehicles,id',
                 'amount' => 'required|numeric|min:1|max:50000',
-                'payment_method' => 'required|in:credit_card,mada_card',
+                'payment_method' => 'required|in:credit_card,mada_card,AMEX,STC_PAY,URPAY',
+                'brand' => 'nullable|string|in:credit_card,mada_card,AMEX,STC_PAY,URPAY',
             ]);
 
             Log::info('RFID HyperPay validation passed', ['validated_data' => $validated]);
@@ -448,10 +449,51 @@ class RfidController extends Controller
             $amount = $validated['amount'];
             $totalAmount = $amount * $vehicles->count();
 
-            // Determine entity ID based on payment method
-            $entityId = $validated['payment_method'] === 'mada_card'
-                ? config('services.hyperpay.entity_id_mada')
-                : config('services.hyperpay.entity_id_credit');
+            // Get the selected brand (prefer 'brand' parameter over 'payment_method')
+            $brand = $validated['brand'] ?? $validated['payment_method'];
+
+            // Define payment method configurations with correct HyperPay brand identifiers
+            $paymentMethods = [
+                'credit_card' => [
+                    'entity_id' => config('services.hyperpay.entity_id_credit'),
+                    'form_brand' => 'VISA MASTER',
+                    'display_name' => 'Visa / MasterCard'
+                ],
+                'mada_card' => [
+                    'entity_id' => config('services.hyperpay.entity_id_mada'),
+                    'form_brand' => 'MADA',
+                    'display_name' => 'MADA Card'
+                ],
+                'AMEX' => [
+                    'entity_id' => config('services.hyperpay.entity_id_credit'),
+                    'form_brand' => 'AMEX VISA MASTER', // HyperPay only supports VISA MASTER or MADA
+                    'display_name' => 'American Express'
+                ],
+                'STC_PAY' => [
+                    'entity_id' => config('services.hyperpay.entity_id_credit'),
+                    'form_brand' => 'STC_PAY', // HyperPay only supports VISA MASTER or MADA
+                    'display_name' => 'STC Pay'
+                ],
+                'URPAY' => [
+                    'entity_id' => config('services.hyperpay.entity_id_credit'),
+                    'form_brand' => 'URPAY', // HyperPay only supports VISA MASTER or MADA
+                    'display_name' => 'URPay'
+                ]
+            ];
+
+            // Get payment configuration or default to credit_card
+            $paymentConfig = $paymentMethods[$brand] ?? $paymentMethods['credit_card'];
+            $entityId = $paymentConfig['entity_id'];
+            $formBrand = $paymentConfig['form_brand'];
+            $displayName = $paymentConfig['display_name'];
+
+            Log::info('RFID HyperPay payment method configuration', [
+                'brand' => $brand,
+                'entity_id' => $entityId,
+                'form_brand' => $formBrand, 
+                'display_name' => $displayName,
+                'payment_config' => $paymentConfig
+            ]);
 
             $user = auth()->user();
             $merchantTransactionId = uniqid('rfid_');
@@ -486,20 +528,25 @@ class RfidController extends Controller
 
             $checkoutId = $result['id'];
 
-            // Store session data
+            // Store session data (matching wallet and service booking implementation)
             session([
                 'rfid_hyperpay_amount' => $totalAmount,
                 'rfid_hyperpay_entity_id' => $entityId,
                 'rfid_hyperpay_vehicles' => $validated['vehicles'],
                 'rfid_hyperpay_amount_per_vehicle' => $amount,
                 'rfid_hyperpay_merchant_transaction_id' => $merchantTransactionId,
+                'rfid_hyperpay_brand' => $brand,
+                'rfid_hyperpay_display_name' => $displayName,
+                'rfid_hyperpay_form_brand' => $formBrand,
             ]);
 
-            // Return the form HTML
+            // Return the form HTML using same approach as other controllers
             $formHtml = view('rfid.partials.hyperpay-form', [
                 'checkoutId' => $checkoutId,
                 'amount' => $totalAmount,
-                'entityId' => $entityId,
+                'brand' => $brand,
+                'formBrand' => $formBrand,
+                'displayName' => $displayName,
                 'returnUrl' => route('rfid.hyperpay.status'),
             ])->render();
 

@@ -239,7 +239,7 @@ class WalletController extends Controller
         $validator = Validator::make($request->all(), [
             'amount' => 'required|numeric|min:10',
             'payment_method' => 'required|in:bank_transfer,bank_guarantee,bank_lc',
-            'payment_files.*' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'payment_files.*' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5048',
             'payment_notes' => 'nullable|string|max:1000'
         ]);
 

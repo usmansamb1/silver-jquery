@@ -28,7 +28,7 @@
                             <div class="card nobg noborder text-center">
                                 <div class="card-body">
 
-                                    <h3 class="card-title"> <i class="bi bi-tags h1 jcolor-white mb-1"> 3 </i> <br> {{ __('Total Tags') }} </h3>
+                                    <h3 class="card-title"> <i class="bi bi-tags h1 jcolor-white mb-1"> {{ $totalServiceBookings }} </i> <br> {{ __('Total Tags') }} </h3>
                                     <p class="card-text t400"></p>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                     <div class="flip-card-back bg-danger no-after" data-height-xl="200" >
                         <div class="flip-card-inner">
                             <p class="mb-2 text-white">{{ __('To view your paid services.') }}</p>
-                            <button type="button" class="btn btn-outline-light mt-2">{{ __('View Details') }}</button>
+                            <button type="button" onclick="window.location.href='{{ route('rfid.index') }}'" class="btn btn-outline-light mt-2">{{ __('View Details') }}</button>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         <div class="flip-card-inner">
                             <div class="card nobg noborder text-center">
                                 <div class="card-body">
-                                    <h3 class="card-title"> <i class="bi bi-tags h1 jcolor-white mb-1"> 1 </i> <br> {{ __('Pending Tags To Install') }} </h3>
+                                    <h3 class="card-title"> <i class="bi bi-tags h1 jcolor-white mb-1"> {{ $totalPendingServiceBookings }} </i> <br> {{ __('Pending Tags To Install') }} </h3>
                                     <p class="card-text t400"></p>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                     <div class="flip-card-back" data-height-xl="200"  style="background-image: url('demos/business/images/featured/3.jpg');">
                         <div class="flip-card-inner">
                             <p class="mb-2 text-white">{{ __('To view your tags list') }}</p>
-                            <button type="button" class="btn btn-outline-light mt-2">{{ __('View Details') }}</button>
+                            <button type="button"  onclick="window.location.href='{{ route('services.booking.history') }}'" class="btn btn-outline-light mt-2">{{ __('View Details') }}</button>
                         </div>
                     </div>
                 </div>
