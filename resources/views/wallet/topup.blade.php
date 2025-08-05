@@ -461,7 +461,7 @@
                 <!-- Payment Methods -->
                 <div class="payment-method active" data-method="credit-card">
                     <input type="radio" name="paymentMethod" checked value="credit_card" hidden>
-                    <img src="{{ asset('theme_files/imgs/payments-icon-small-3.png') }}" class="img-thumbnail">
+                    <img style="padding: 23px 2px;" src="{{ asset('theme_files/imgs/payment-gateways5.png') }}" class="img-thumbnail">
                     <div class="hidden-content" style="display: block;">
                         <p class="mt-3 mb-2"><strong>{{ __('Credit Card') }} {{ __('Payment') }}</strong></p>
                         <p class="text-muted small">{{ __('Use the form below to complete your payment securely.') }}</p>
@@ -501,6 +501,9 @@
                                 <select id="hyperpayBrand" class="form-select">
                                     <option value="credit_card">{{ __('Visa / MasterCard') }}</option>
                                     <option value="mada_card">{{ __('MADA (مدى)') }}</option>
+                                    <option value="AMEX">{{ __('AMEX') }}</option>
+                                    <option value="STC_PAY">{{ __('STCPay') }}</option>
+                                    <option value="URPAY">{{ __('URPay') }}</option>
                                 </select>
                                 <small class="text-muted">
                                     <i class="fas fa-info-circle me-1"></i>

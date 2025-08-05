@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Setup HyperPay form
   setupHyperPayForm();
   
+  // Make loadHyperPayWidget globally available for brand switching
+  window.loadHyperPayWidget = loadHyperPayWidget;
+  
   // Disable submit button initially if no services
   const submitBtn = document.getElementById('placeOrderBtn');
   const servicesList = document.getElementById('servicesList');
@@ -204,6 +207,8 @@ async function loadHyperPayWidget() {
       pickup_location: document.getElementById('pickup_location').value
     };
     
+    console.log('🔍 Requesting HyperPay form with data:', requestData);
+    
     // Get HyperPay checkout ID
     const response = await fetch('/services/booking/hyperpay/get-form', {
       method: 'POST',
@@ -217,7 +222,10 @@ async function loadHyperPayWidget() {
     
     const data = await response.json();
     
+    console.log('🔍 HyperPay response received:', data);
+    
     if (data.status !== 'success' || !data.checkout_id) {
+      console.error('❌ HyperPay response failed:', data);
       throw new Error(data.message || window.translations?.failed_to_initialize_payment || 'Failed to initialize payment');
     }
     
@@ -1155,6 +1163,36 @@ function initOrderForm() {
             
             // Update the summary
             updateSummary();
+            
+            // Check if we need to reload HyperPay widget
+            const remainingServices = servicesList.querySelectorAll('.service-item');
+            const paymentCreditCard = document.getElementById('payment_credit_card');
+            
+            if (remainingServices.length > 0 && paymentCreditCard && paymentCreditCard.checked) {
+              // Still have services and credit card is selected - reload widget with updated amount
+              console.log('🔄 Service removed but credit card still selected - reloading widget with updated amount...');
+              setTimeout(() => {
+                if (typeof loadHyperPayWidget === 'function') {
+                  loadHyperPayWidget();
+                }
+              }, 100);
+            } else if (remainingServices.length === 0) {
+              // No services left - hide credit card form and switch to wallet
+              const creditCardContainer = document.getElementById('credit-card-payment-container');
+              const paymentWallet = document.getElementById('payment_wallet');
+              const placeOrderBtn = document.getElementById('placeOrderBtn');
+              
+              if (creditCardContainer) {
+                creditCardContainer.classList.add('d-none');
+              }
+              
+              if (paymentWallet && paymentCreditCard && placeOrderBtn) {
+                paymentWallet.checked = true;
+                paymentCreditCard.checked = false;
+                placeOrderBtn.style.display = 'block';
+                placeOrderBtn.innerHTML = '<i class="fa fa-wallet me-2"></i>Place Order (Wallet Payment)';
+              }
+            }
             
             // Show delete notification
             showToast(window.translations?.service_removed || "Service removed from list", window.translations?.info || "info");

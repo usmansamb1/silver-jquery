@@ -296,13 +296,15 @@
                     <div class="card-body">
                         <h4 class="mb-3">{{ __('Secure Payment') }}</h4>
                         
-                        <!-- Card Brand Selection -->
+                        <!-- Payment Method Selection -->
                         <div class="mb-4">
-                            <label class="form-label fw-bold">{{ __('Select Card Type') }}</label>
+                            <label class="form-label fw-bold">{{ __('Select Payment Method') }}</label>
+                            <small class="text-muted d-block mb-3">{{ __('All payment methods use secure HyperPay processing') }}</small>
                             <div class="row">
+                                <!-- Visa / MasterCard -->
                                 <div class="col-md-6 mb-3">
                                     <div class="form-check card-brand-option">
-                                        <input class="form-check-input" type="radio" name="card_brand" id="visa_mastercard" value="VISA MASTER" checked>
+                                        <input class="form-check-input" type="radio" name="card_brand" id="visa_mastercard" value="credit_card" checked>
                                         <label class="form-check-label d-flex align-items-center" for="visa_mastercard">
                                             <div class="card-brand-icons me-3">
                                                 <svg class="visa-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -320,9 +322,11 @@
                                         </label>
                                     </div>
                                 </div>
+                                
+                                <!-- MADA Card -->
                                 <div class="col-md-6 mb-3">
                                     <div class="form-check card-brand-option">
-                                        <input class="form-check-input" type="radio" name="card_brand" id="mada_card" value="MADA">
+                                        <input class="form-check-input" type="radio" name="card_brand" id="mada_card" value="mada_card">
                                         <label class="form-check-label d-flex align-items-center" for="mada_card">
                                             <div class="card-brand-icons me-3">
                                                 <svg class="mada-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -331,6 +335,54 @@
                                                 </svg>
                                             </div>
                                             <span class="card-brand-text">{{ __('MADA Card') }}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- American Express -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check card-brand-option">
+                                        <input class="form-check-input" type="radio" name="card_brand" id="amex_card" value="AMEX">
+                                        <label class="form-check-label d-flex align-items-center" for="amex_card">
+                                            <div class="card-brand-icons me-3">
+                                                <svg class="amex-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="40" height="25" rx="3" fill="#006FCF"/>
+                                                    <text x="20" y="16" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">AMEX</text>
+                                                </svg>
+                                            </div>
+                                            <span class="card-brand-text">{{ __('American Express') }}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- STC Pay -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check card-brand-option">
+                                        <input class="form-check-input" type="radio" name="card_brand" id="stc_pay" value="STC_PAY">
+                                        <label class="form-check-label d-flex align-items-center" for="stc_pay">
+                                            <div class="card-brand-icons me-3">
+                                                <svg class="stc-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="40" height="25" rx="3" fill="#662D91"/>
+                                                    <text x="20" y="16" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="7" font-weight="bold">STC PAY</text>
+                                                </svg>
+                                            </div>
+                                            <span class="card-brand-text">{{ __('STC Pay') }}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- URPay -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check card-brand-option">
+                                        <input class="form-check-input" type="radio" name="card_brand" id="ur_pay" value="URPAY">
+                                        <label class="form-check-label d-flex align-items-center" for="ur_pay">
+                                            <div class="card-brand-icons me-3">
+                                                <svg class="urpay-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="40" height="25" rx="3" fill="#00A651"/>
+                                                    <text x="20" y="16" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">URPAY</text>
+                                                </svg>
+                                            </div>
+                                            <span class="card-brand-text">{{ __('URPay') }}</span>
                                         </label>
                                     </div>
                                 </div>
@@ -389,6 +441,20 @@
                             </small>
                         </div> --}}
                         
+                        <!-- Payment Method Selected Info -->
+                        <div id="selected-payment-method" class="alert alert-success mb-3" style="display: none;">
+                            <div class="d-flex align-items-center">
+                                <div id="selected-method-icon" class="me-3">
+                                    <!-- Icon will be inserted here -->
+                                </div>
+                                <div>
+                                    <strong>{{ __('Selected Method') }}: <span id="selected-method-name">Visa/MasterCard</span></strong>
+                                    <br>
+                                    <small class="text-muted">{{ __('Payment form will load below when ready') }}</small>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- HyperPay Widget Container -->
                         <div id="hyperpay-widget" style="min-height: 300px;">
                             <div class="text-center py-4">
@@ -434,16 +500,15 @@
                     placeOrderBtn.style.display = 'none';
                 }
                 
-                // CRITICAL FIX: Don't load widget here - let order-form.js handle it
-                // This prevents multiple loading and flickering
-                // setTimeout(() => {
-                //     // Only trigger widget loading if we have services added
-                //     const serviceItems = document.querySelectorAll('.service-item');
-                //     if (serviceItems.length > 0 && typeof window.loadHyperPayWidget === 'function') {
-                //         console.log('🔄 Triggering HyperPay widget loading after payment method change...');
-                //         window.loadHyperPayWidget();
-                //     }
-                // }, 100);
+                // CRITICAL: Load widget with correct brand when switching to credit card
+                setTimeout(() => {
+                    // Only trigger widget loading if we have services added
+                    const serviceItems = document.querySelectorAll('.service-item');
+                    if (serviceItems.length > 0 && typeof window.loadHyperPayWidget === 'function') {
+                        console.log('🔄 Triggering HyperPay widget loading after switching to credit card payment...');
+                        window.loadHyperPayWidget();
+                    }
+                }, 100);
 
             } else {
                 if (creditCardPaymentContainer) {
@@ -478,7 +543,74 @@
         // Initial toggle based on saved state
         toggleCreditCardForm();
         
-        // Card brand selection enhancement
+        // Payment method display mapping
+        const paymentMethodMapping = {
+            'credit_card': {
+                name: 'Visa / MasterCard',
+                icon: `<svg class="visa-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="25" rx="3" fill="#1A1F71"/>
+                    <path d="M16.5 8.5L14 16.5H11.5L14 8.5H16.5ZM22.5 8.5L20.5 13.5L19.5 9.5C19.2 8.5 18.5 8.5 18.5 8.5H15.5L15.6 8.8C16.2 9 16.5 9.5 16.5 9.5L18.5 16.5H21L25.5 8.5H22.5ZM28.5 8.5H26.5C26.2 8.5 26 8.7 26 9V16.5H28.5V8.5Z" fill="white"/>
+                </svg>
+                <svg class="mastercard-icon ms-2" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="25" rx="3" fill="#EB001B"/>
+                    <rect x="20" width="20" height="25" rx="3" fill="#F79E1B"/>
+                    <circle cx="17" cy="12.5" r="6" fill="#FF5F00"/>
+                    <circle cx="23" cy="12.5" r="6" fill="#FF5F00"/>
+                </svg>`,
+                instruction: 'Enter your Visa or MasterCard details below'
+            },
+            'mada_card': {
+                name: 'MADA Card',
+                icon: `<svg class="mada-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="25" rx="3" fill="#0066CC"/>
+                    <text x="20" y="16" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">مدى</text>
+                </svg>`,
+                instruction: 'Enter your MADA card details below'
+            },
+            'AMEX': {
+                name: 'American Express',
+                icon: `<svg class="amex-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="25" rx="3" fill="#006FCF"/>
+                    <text x="20" y="16" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">AMEX</text>
+                </svg>`,
+                instruction: 'Enter your American Express card details below'
+            },
+            'STC_PAY': {
+                name: 'STC Pay',
+                icon: `<svg class="stc-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="25" rx="3" fill="#662D91"/>
+                    <text x="20" y="16" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="7" font-weight="bold">STC PAY</text>
+                </svg>`,
+                instruction: 'Enter your card details to process via STC Pay'
+            },
+            'URPAY': {
+                name: 'URPay',
+                icon: `<svg class="urpay-icon" width="40" height="25" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="25" rx="3" fill="#00A651"/>
+                    <text x="20" y="16" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">URPAY</text>
+                </svg>`,
+                instruction: 'Enter your card details to process via URPay'
+            }
+        };
+
+        // Function to update payment method display
+        function updatePaymentMethodDisplay(selectedValue) {
+            const selectedMethodDiv = document.getElementById('selected-payment-method');
+            const selectedMethodIcon = document.getElementById('selected-method-icon');
+            const selectedMethodName = document.getElementById('selected-method-name');
+            const instructionText = selectedMethodDiv.querySelector('.text-muted');
+            
+            if (selectedMethodDiv && selectedMethodIcon && selectedMethodName) {
+                const methodInfo = paymentMethodMapping[selectedValue] || paymentMethodMapping['credit_card'];
+                
+                selectedMethodIcon.innerHTML = methodInfo.icon;
+                selectedMethodName.textContent = methodInfo.name;
+                instructionText.textContent = methodInfo.instruction;
+                selectedMethodDiv.style.display = 'block';
+            }
+        }
+
+        // Card brand selection enhancement with widget reload
         document.querySelectorAll('.card-brand-option').forEach(option => {
             const radio = option.querySelector('input[type="radio"]');
             const label = option.querySelector('.form-check-label');
@@ -491,7 +623,7 @@
                 }
             });
             
-            // Update visual state when radio changes
+            // Update visual state and reload widget when radio changes
             radio.addEventListener('change', function() {
                 // Remove active class from all options
                 document.querySelectorAll('.card-brand-option').forEach(opt => {
@@ -501,9 +633,47 @@
                 // Add active class to selected option
                 if (this.checked) {
                     option.classList.add('active');
+                    // Update payment method display
+                    updatePaymentMethodDisplay(this.value);
+                    
+                    // CRITICAL: Reload HyperPay widget with new brand selection
+                    // Only reload if credit card payment is selected and we have services
+                    const paymentCreditCard = document.getElementById('payment_credit_card');
+                    const serviceItems = document.querySelectorAll('.service-item');
+                    
+                    if (paymentCreditCard && paymentCreditCard.checked && serviceItems.length > 0) {
+                        console.log('🔄 Brand changed to:', this.value, '- Reloading HyperPay widget...');
+                        
+                        // Show loading state immediately
+                        const hyperpayWidget = document.getElementById('hyperpay-widget');
+                        if (hyperpayWidget) {
+                            hyperpayWidget.innerHTML = `
+                                <div class="text-center py-4">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2 text-muted">Updating payment method...</p>
+                                </div>
+                            `;
+                        }
+                        
+                        // Reload the widget with new brand
+                        if (typeof window.loadHyperPayWidget === 'function') {
+                            setTimeout(() => {
+                                window.loadHyperPayWidget();
+                            }, 100);
+                        }
+                    }
                 }
             });
         });
+
+        // Initialize payment method display
+        const initialSelectedBrand = document.querySelector('input[name="card_brand"]:checked');
+        if (initialSelectedBrand) {
+            updatePaymentMethodDisplay(initialSelectedBrand.value);
+            initialSelectedBrand.closest('.card-brand-option').classList.add('active');
+        }
         
         // Show test card info in test environment
         @if(config('services.hyperpay.mode') === 'test' || str_contains(config('services.hyperpay.base_url'), 'test') || config('app.env') === 'local')
@@ -631,7 +801,7 @@
     gap: 8px;
 }
 
-.visa-icon, .mastercard-icon, .mada-icon {
+.visa-icon, .mastercard-icon, .mada-icon, .amex-icon, .stc-icon, .urpay-icon {
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -639,7 +809,10 @@
 
 .card-brand-option:hover .visa-icon,
 .card-brand-option:hover .mastercard-icon,
-.card-brand-option:hover .mada-icon {
+.card-brand-option:hover .mada-icon,
+.card-brand-option:hover .amex-icon,
+.card-brand-option:hover .stc-icon,
+.card-brand-option:hover .urpay-icon {
     transform: scale(1.05);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
@@ -691,7 +864,7 @@
         gap: 6px;
     }
     
-    .visa-icon, .mastercard-icon, .mada-icon {
+    .visa-icon, .mastercard-icon, .mada-icon, .amex-icon, .stc-icon, .urpay-icon {
         width: 35px;
         height: 22px;
     }
@@ -726,6 +899,36 @@
     transition: all 0.2s ease;
 }
 
+/* Selected Payment Method Display */
+#selected-payment-method {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    border-left: 4px solid #0061f2;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    animation: fadeInDown 0.3s ease-out;
+}
+
+#selected-payment-method .d-flex {
+    align-items: center;
+}
+
+#selected-method-icon {
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#selected-method-icon svg {
+    margin: 0 2px;
+}
+
+#selected-method-name {
+    color: #0061f2;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
 /* Toast Animation */
 .toast {
     animation: slideInRight 0.3s ease-out;
@@ -738,6 +941,17 @@
     }
     to {
         transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
         opacity: 1;
     }
 }

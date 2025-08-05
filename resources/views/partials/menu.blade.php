@@ -564,7 +564,7 @@ window.addEventListener('load', function() {
                             <a href="{{ route('profile.show') }}" class="LoadingUi">
                                 <div class="order-4 order-lg-1 text-lg-start">
                                     <div class="col">
-                                        <img src="{{ $user->avatar_url }}" class="img-circle img-thumbnail mb-1" alt="Profile" style="max-width: 84px; height: 84px; object-fit: cover;">
+                                        <img src="{{ $user->avatar_url ?? '' }}" class="img-circle img-thumbnail mb-1" alt="Profile" style="max-width: 84px; height: 84px; object-fit: cover;">
                                         <h4 class="mb-2">{{ $user->name ?? $user->company_name ?? 'User' }}</h4>
                                         <h5 class="mb-2">#{{ $user->formatted_customer_no }}</h5>
                                     </div>

@@ -1030,7 +1030,7 @@ class ServiceBookingController extends Controller
         // Enhanced validation with better error messages
         $validator = Validator::make($request->all(), [
             'amount' => 'required|numeric|min:10|max:50000',
-            'brand' => 'required|string|in:credit_card,mada_card,VISA MASTER,MADA',
+            'brand' => 'required|string|in:credit_card,mada_card,AMEX,STC_PAY,URPAY,VISA MASTER,MADA',
             'order_id' => 'nullable|exists:orders,id',
             'pickup_location' => 'nullable|string|max:255',
             'services' => 'nullable|array',
@@ -1048,7 +1048,7 @@ class ServiceBookingController extends Controller
             'amount.min' => 'Minimum payment amount is 10 SAR',
             'amount.max' => 'Maximum payment amount is 50,000 SAR',
             'brand.required' => 'Card brand is required',
-            'brand.in' => 'Invalid card brand. Must be credit_card, mada_card, VISA MASTER, or MADA'
+            'brand.in' => 'Invalid payment method. Must be credit_card, mada_card, AMEX, STC_PAY, or URPAY'
         ]);
 
         if ($validator->fails()) {
@@ -1072,16 +1072,72 @@ class ServiceBookingController extends Controller
         $pickupLocation = $request->input('pickup_location', 'Payment via HyperPay');
         $services = $request->input('services', []);
 
-        // CRITICAL FIX: Normalize brand parameter to backend expected values
-        if (in_array($brand, ['MADA', 'mada_card'])) {
-            $normalizedBrand = 'mada_card';
-            $entityId = config('services.hyperpay.entity_id_mada');
-            $paymentBrand = 'MADA';
-        } else {
-            $normalizedBrand = 'credit_card';
-            $entityId = config('services.hyperpay.entity_id_credit');
-            $paymentBrand = 'VISA MASTER';
-        }
+        // Debug logging for service booking HyperPay requests
+        Log::info('ServiceBooking HyperPay form request received', [
+            'user_id' => $user->id,
+            'request_brand' => $brand,
+            'amount' => $amount,
+            'order_id' => $orderId,
+            'services_count' => count($services),
+            'full_request' => $request->all()
+        ]);
+
+        // Define payment method configurations with correct HyperPay brand identifiers
+        $paymentMethods = [
+            'credit_card' => [
+                'entity_id' => config('services.hyperpay.entity_id_credit'),
+                'form_brand' => 'VISA MASTER',
+                'normalized_brand' => 'credit_card',
+                'display_name' => 'Credit Card (Visa/MasterCard)'
+            ],
+            'mada_card' => [
+                'entity_id' => config('services.hyperpay.entity_id_mada'),
+                'form_brand' => 'MADA',
+                'normalized_brand' => 'mada_card',
+                'display_name' => 'MADA Card'
+            ],
+            // AMEX uses the same widget as Visa/MasterCard
+            'AMEX' => [
+                'entity_id' => config('services.hyperpay.entity_id_credit'),
+                'form_brand' => 'AMEX VISA MASTER',
+                'normalized_brand' => 'AMEX',
+                'display_name' => 'American Express'
+            ],
+            // Digital wallets use the same credit card widget but process differently
+            'STC_PAY' => [
+                'entity_id' => config('services.hyperpay.entity_id_credit'),
+                'form_brand' => 'STC_PAY',
+                'normalized_brand' => 'STC_PAY',
+                'display_name' => 'STC Pay'
+            ],
+            'URPAY' => [
+                'entity_id' => config('services.hyperpay.entity_id_credit'),
+                'form_brand' => 'URPAY',
+                'normalized_brand' => 'URPAY',
+                'display_name' => 'URPay'
+            ],
+            // Legacy support for old values
+            'VISA MASTER' => [
+                'entity_id' => config('services.hyperpay.entity_id_credit'),
+                'form_brand' => 'VISA MASTER',
+                'normalized_brand' => 'credit_card',
+                'display_name' => 'Credit Card (Visa/MasterCard)'
+            ],
+            'MADA' => [
+                'entity_id' => config('services.hyperpay.entity_id_mada'),
+                'form_brand' => 'MADA',
+                'normalized_brand' => 'mada_card',
+                'display_name' => 'MADA Card'
+            ]
+        ];
+
+        // Get payment method configuration
+        $paymentConfig = $paymentMethods[$brand] ?? $paymentMethods['credit_card'];
+       
+        $entityId = $paymentConfig['entity_id'];
+        $paymentBrand = $paymentConfig['form_brand'];
+        $normalizedBrand = $paymentConfig['normalized_brand'];
+        $displayName = $paymentConfig['display_name'];
         
         // Pre-flight configuration check
         $configErrors = [];
@@ -1205,14 +1261,31 @@ class ServiceBookingController extends Controller
                     'hyperpay_amount' => $amount,
                     'hyperpay_entity_id' => $entityId, // CRITICAL: Store entity ID like wallet
                     'hyperpay_brand' => $normalizedBrand,
+                    'hyperpay_display_name' => $displayName,
+                    'hyperpay_original_brand' => $brand,
                     'hyperpay_order_id' => $orderId,
                     'hyperpay_merchant_tx_id' => $merchantTransactionId,
                     'hyperpay_pickup_location' => $pickupLocation,
                     'hyperpay_services' => $services // CRITICAL: Store service data for later use
                 ]);
 
-                // Generate form HTML
-                $formHtml = $this->generateHyperpayFormOnly($checkoutId, $paymentBrand);
+                // Generate form HTML using the same approach as WalletController
+                $viewData = [
+                    'checkoutId' => $checkoutId,
+                    'amount' => $amount,
+                    'brand' => $brand,
+                    'formBrand' => $paymentBrand,
+                    'displayName' => $displayName,
+                ];
+                
+                Log::info('HyperPay form view data', [
+                    'view_data' => $viewData,
+                    'original_brand' => $brand,
+                    'payment_brand' => $paymentBrand,
+                    'display_name' => $displayName
+                ]);
+                
+                $formHtml = view('services.booking.partials.hyperpay-form', $viewData)->render();
                 
                 Log::info('HyperPay widget HTML generated', [
                     'html_length' => strlen($formHtml),
@@ -1225,6 +1298,9 @@ class ServiceBookingController extends Controller
                 return response()->json([
                     'status' => 'success',
                     'checkout_id' => $checkoutId,
+                    'amount' => $amount,
+                    'brand' => $brand,
+                    'display_name' => $displayName,
                     'html' => $formHtml,
                     'script_url' => 'https://eu-test.oppwa.com/v1/paymentWidgets.js?checkoutId=' . $checkoutId,
                     'widget_options' => [
@@ -1513,16 +1589,18 @@ class ServiceBookingController extends Controller
     /**
      * Generate HyperPay form HTML only (without script)
      */
-    private function generateHyperpayFormOnly($checkoutId, $brand)
+    private function generateHyperpayFormOnly($checkoutId, $formBrand, $originalBrand = 'credit_card', $displayName = 'Credit Card')
     {
         // Use the exact same approach as wallet controller - simple HTML generation
         $route = route('services.booking.hyperpay.status');
-        $brandData = $brand === 'MADA' ? 'MADA' : 'VISA MASTER';
+        $brandData = $formBrand === 'MADA' ? 'MADA' : 'VISA MASTER';
         
         $html = '<form id="hyperpay-payment-form" action="' . $route . '" class="paymentWidgets" ';
         $html .= 'data-brands="' . $brandData . '" ';
         $html .= 'data-checkout-id="' . $checkoutId . '">';
         $html .= '<input type="hidden" name="expected_amount" id="expected-amount" value="' . session('hyperpay_amount', 0) . '">';
+        $html .= '<input type="hidden" name="payment_brand" value="' . htmlspecialchars($originalBrand) . '">';
+        $html .= '<input type="hidden" name="display_name" value="' . htmlspecialchars($displayName) . '">';
         $html .= csrf_field();
         $html .= '</form>';
         
@@ -1530,6 +1608,9 @@ class ServiceBookingController extends Controller
             'html_length' => strlen($html),
             'form_contains_form_tag' => strpos($html, '<form') !== false,
             'form_contains_paymentWidgets' => strpos($html, 'paymentWidgets') !== false,
+            'brand_data' => $brandData,
+            'original_brand' => $originalBrand,
+            'display_name' => $displayName,
             'html_preview' => $html
         ]);
         

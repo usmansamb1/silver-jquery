@@ -1458,17 +1458,24 @@ class WalletController extends Controller
             // Extract card brand from HyperPay response
             $cardBrand = $this->extractCardBrand($result);
             
+            // Get stored payment information from session
+            $storedBrand = session('hyperpay_brand', 'credit_card');
+            $storedDisplayName = session('hyperpay_display_name', 'Credit Card');
+            
+            // Map payment brand for database storage
+            $paymentType = ($storedBrand === 'mada_card') ? 'mada_card' : 'credit_card';
+            
             // Get or create wallet
             $wallet = Wallet::firstOrCreate(['user_id' => $user->id], ['balance' => 0]);
             
-            // Create payment record with test mode indicator and card brand
+            // Create payment record with test mode indicator and brand information
             $paymentNotes = $isTestMode 
-                ? "[TEST MODE] {$cardBrand} payment via HyperPay - Transaction ID: " . ($hyperpayTransactionId ?? 'N/A')
-                : "{$cardBrand} payment via HyperPay - Transaction ID: " . ($hyperpayTransactionId ?? 'N/A');
+                ? "[TEST MODE] {$storedDisplayName} payment via HyperPay - Transaction ID: " . ($hyperpayTransactionId ?? 'N/A')
+                : "{$storedDisplayName} payment via HyperPay - Transaction ID: " . ($hyperpayTransactionId ?? 'N/A');
                 
             $payment = Payment::create([
                 'user_id' => $user->id,
-                'payment_type' => 'credit_card',
+                'payment_type' => $paymentType,
                 'card_brand' => $cardBrand,
                 'amount' => $amount,
                 'status' => 'approved',
@@ -1478,15 +1485,16 @@ class WalletController extends Controller
             
             // Create wallet transaction using the deposit method
             $transactionDescription = $isTestMode 
-                ? "[TEST MODE] Wallet top-up via {$cardBrand} (HyperPay)" 
-                : "Wallet top-up via {$cardBrand} (HyperPay)";
+                ? "[TEST MODE] Wallet top-up via {$storedDisplayName} (HyperPay)" 
+                : "Wallet top-up via {$storedDisplayName} (HyperPay)";
                 
             $transaction = $wallet->deposit(
                 $amount,
                 $transactionDescription,
                 $payment,
                 [
-                    'payment_method' => 'credit_card',
+                    'payment_method' => $paymentType,
+                    'payment_brand' => $storedBrand,
                     'card_brand' => $cardBrand,
                     'payment_id' => $payment->id,
                     'gateway' => 'hyperpay',
@@ -1499,12 +1507,14 @@ class WalletController extends Controller
             
             // Log the wallet recharge activity
             $logMessage = $isTestMode
-                ? "TEST MODE: Wallet topped up with {$amount} SAR via {$cardBrand} (HyperPay)"
-                : "Wallet topped up with {$amount} SAR via {$cardBrand} (HyperPay)";
+                ? "TEST MODE: Wallet topped up with {$amount} SAR via {$storedDisplayName} (HyperPay)"
+                : "Wallet topped up with {$amount} SAR via {$storedDisplayName} (HyperPay)";
                 
             LogHelper::logWalletRecharge($wallet, $logMessage, [
                 'amount' => $amount,
-                'payment_method' => 'credit_card',
+                'payment_method' => $paymentType,
+                'payment_brand' => $storedBrand,
+                'display_name' => $storedDisplayName,
                 'card_brand' => $cardBrand,
                 'payment_id' => $payment->id,
                 'transaction_id' => $transaction->id,
@@ -1515,12 +1525,19 @@ class WalletController extends Controller
             
             DB::commit();
             
-            // Clear session amount
-            session()->forget('hyperpay_amount');
+            // Clear session data
+            session()->forget([
+                'hyperpay_amount',
+                'hyperpay_entity_id',
+                'hyperpay_brand',
+                'hyperpay_display_name'
+            ]);
             
-            Log::info($isTestMode ? "TEST MODE: {$cardBrand} payment processed successfully via HyperPay" : "{$cardBrand} payment processed successfully via HyperPay", [
+            Log::info($isTestMode ? "TEST MODE: {$storedDisplayName} payment processed successfully via HyperPay" : "{$storedDisplayName} payment processed successfully via HyperPay", [
                 'user_id' => $user->id,
                 'amount' => $amount,
+                'payment_brand' => $storedBrand,
+                'display_name' => $storedDisplayName,
                 'card_brand' => $cardBrand,
                 'payment_id' => $payment->id,
                 'transaction_id' => $transaction->id,
@@ -1695,7 +1712,7 @@ class WalletController extends Controller
         try {
             $request->validate([
                 'amount' => 'required|numeric|min:10|max:50000',
-                'brand' => 'nullable|string|in:credit_card,mada_card',
+                'brand' => 'nullable|string|in:credit_card,mada_card,AMEX,STC_PAY,URPAY',
             ]);
 
             $amount = floatval($request->amount);
@@ -1703,28 +1720,59 @@ class WalletController extends Controller
             $user = auth()->user();
             $merchantTransactionId = uniqid('txn_');
 
-            // Build payload and entityId based on brand
-            if ($brand === 'mada_card') {
-                $entityId = config('services.hyperpay.entity_id_mada');
-                $formBrand = 'MADA';
-            } else {
-                $entityId = config('services.hyperpay.entity_id_credit');
-                $formBrand = 'VISA MASTER';
-            }
+            // Define payment method configurations with correct HyperPay brand identifiers
+            $paymentMethods = [
+                'credit_card' => [
+                    'entity_id' => config('services.hyperpay.entity_id_credit'),
+                    'form_brand' => 'VISA MASTER',
+                    'display_name' => 'Credit Card (Visa/MasterCard)'
+                ],
+                'mada_card' => [
+                    'entity_id' => config('services.hyperpay.entity_id_mada'),
+                    'form_brand' => 'MADA',
+                    'display_name' => 'MADA Card'
+                ],
+                // AMEX uses the same widget as Visa/MasterCard
+                'AMEX' => [
+                    'entity_id' => config('services.hyperpay.entity_id_credit'),
+                    'form_brand' => 'AMEX VISA MASTER',
+                    'display_name' => 'American Express'
+                ],
+                // Digital wallets use the same credit card widget but process differently
+                'STC_PAY' => [
+                    'entity_id' => config('services.hyperpay.entity_id_credit'),
+                    'form_brand' => 'STC_PAY',
+                    'display_name' => 'STC Pay'
+                ],
+                'URPAY' => [
+                    'entity_id' => config('services.hyperpay.entity_id_credit'),
+                    'form_brand' => 'URPAY',
+                    'display_name' => 'URPay'
+                ]
+            ];
+
+            // Get payment method configuration
+            $paymentConfig = $paymentMethods[$brand] ?? $paymentMethods['credit_card'];
+            $entityId = $paymentConfig['entity_id'];
+            $formBrand = $paymentConfig['form_brand'];
+            $displayName = $paymentConfig['display_name'];
 
             // Validate entity ID is configured
             if (empty($entityId)) {
+                $configKey = ($brand === 'mada_card') ? 'services.hyperpay.entity_id_mada' : 'services.hyperpay.entity_id_credit';
+                
                 Log::error('Missing entity ID for payment brand', [
                     'brand' => $brand,
                     'entity_id' => $entityId,
-                    'config_key' => $brand === 'mada_card' ? 'services.hyperpay.entity_id_mada' : 'services.hyperpay.entity_id_credit'
+                    'config_key' => $configKey,
+                    'display_name' => $displayName
                 ]);
                 
                 return response()->json([
                     'success' => false,
-                    'message' => $brand === 'mada_card' ? 
+                    'message' => ($brand === 'mada_card') ? 
                         'MADA payment is not configured. Please contact support.' : 
-                        'Credit card payment is not configured. Please contact support.'
+                        $displayName . ' payment is not configured. Please contact support.'
                 ], 500);
             }
 
@@ -1750,6 +1798,7 @@ class WalletController extends Controller
                 
                 Log::error('HyperPay checkout creation failed', [
                     'brand' => $brand,
+                    'display_name' => $displayName,
                     'entity_id' => $entityId,
                     'amount' => $amount,
                     'status_code' => $response->status(),
@@ -1759,9 +1808,7 @@ class WalletController extends Controller
                 
                 return response()->json([
                     'success' => false,
-                    'message' => $brand === 'mada_card' ? 
-                        'Mada card payment initialization failed: ' . $errorMessage : 
-                        'Payment initialization failed: ' . $errorMessage
+                    'message' => $displayName . ' payment initialization failed: ' . $errorMessage
                 ], 500);
             }
 
@@ -1771,6 +1818,7 @@ class WalletController extends Controller
             if (!$checkoutId) {
                 Log::error('HyperPay invalid response', [
                     'brand' => $brand,
+                    'display_name' => $displayName,
                     'response' => $data
                 ]);
                 
@@ -1784,6 +1832,8 @@ class WalletController extends Controller
             session([
                 'hyperpay_amount' => $amount,
                 'hyperpay_entity_id' => $entityId,
+                'hyperpay_brand' => $brand,
+                'hyperpay_display_name' => $displayName,
             ]);
 
             // Generate form HTML
@@ -1791,18 +1841,24 @@ class WalletController extends Controller
                 'checkoutId' => $checkoutId,
                 'amount' => $amount,
                 'brand' => $brand,
+                'formBrand' => $formBrand,
+                'displayName' => $displayName,
             ])->render();
 
             return response()->json([
                 'success' => true,
                 'checkout_id' => $checkoutId,
                 'amount' => $amount,
+                'brand' => $brand,
+                'display_name' => $displayName,
                 'html' => $formHtml
             ]);
         } catch (\Exception $e) {
             logger()->error('Hyperpay form creation failed', [
                 'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
                 'amount' => $request->amount ?? 'unknown',
+                'brand' => $request->brand ?? 'unknown',
                 'user_id' => auth()->id()
             ]);
 
