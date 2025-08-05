@@ -92,13 +92,13 @@ class WalletApprovalNotification extends Notification implements ShouldQueue
     {
         switch ($this->status) {
             case 'pending':
-                return 'New Wallet Top-up Approval Required - JoilYaseeir';
+                return 'New Wallet Top-up Approval Required - FuelApp';
             case 'completed':
-                return 'Wallet Top-up Approved - JoilYaseeir';
+                return 'Wallet Top-up Approved - FuelApp';
             case 'rejected':
-                return 'Wallet Top-up Rejected - JoilYaseeir';
+                return 'Wallet Top-up Rejected - FuelApp';
             default:
-                return 'Wallet Top-up Update - JoilYaseeir';
+                return 'Wallet Top-up Update - FuelApp';
         }
     }
 } 

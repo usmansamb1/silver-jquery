@@ -69,7 +69,7 @@ class RfidRechargeSuccess extends Notification implements ShouldQueue
             ->line('')
             ->line('Your RFID is now ready to use at our partner fuel stations.')
             ->action('View RFID Management', route('rfid.index'))
-            ->line('Thank you for using JoilYaseeir!');
+            ->line('Thank you for using FuelApp - JOIL!');
 
         return $message;
     }

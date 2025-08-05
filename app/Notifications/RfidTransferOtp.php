@@ -44,7 +44,7 @@ class RfidTransferOtp extends Notification implements ShouldQueue
         $targetVehicle = $this->transfer->targetVehicle;
         
         return (new MailMessage)
-            ->subject('RFID Transfer OTP Verification - Joil Yaseeir')
+            ->subject('RFID Transfer OTP Verification - FuelApp - JOIL')
             ->greeting('Hello ' . $notifiable->name)
             ->line('You have requested to transfer an RFID chip from one vehicle to another.')
             ->line('Source Vehicle: ' . $sourceVehicle->manufacturer . ' ' . $sourceVehicle->make . ' ' . $sourceVehicle->model . ' (' . $sourceVehicle->plate_number . ')')

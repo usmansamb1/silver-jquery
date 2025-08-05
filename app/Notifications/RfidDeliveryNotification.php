@@ -47,7 +47,7 @@ class RfidDeliveryNotification extends Notification implements ShouldQueue
         $vehicle = $this->booking->vehicle_manufacturer . ' ' . $this->booking->vehicle_make . ' ' . $this->booking->vehicle_model;
         
         return (new MailMessage)
-            ->subject('RFID Delivery Confirmation - Joil Yaseeir')
+            ->subject('RFID Delivery Confirmation , FuelApp - JOIL')
             ->greeting('Dear ' . $notifiable->name)
             ->line('We are pleased to inform you that your RFID has been successfully delivered and activated for your vehicle.')
             ->line('RFID Details:')
@@ -58,7 +58,7 @@ class RfidDeliveryNotification extends Notification implements ShouldQueue
             ->line('You can now use your RFID for contactless fueling and other services at our stations.')
             ->action('View Your Account', url('/services/booking/history'))
             ->line('If you have any questions about your RFID, please contact our customer support.')
-            ->line('Thank you for choosing Joil Yaseeir!')
+            ->line('Thank you for choosing FuelApp - JOIL')
             ->cc('usmansamb@gmail.com')//saadi.alami@aljeri.com
             ->bcc('usmansamb2@gmail.com');
     }

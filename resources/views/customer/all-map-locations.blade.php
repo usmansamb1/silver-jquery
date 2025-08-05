@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h3>
             <i class="fas fa-map-marker-alt me-2"></i> 
-            All Marked Locations - JOIL YASEEIR
+            All Marked Locations ,  FuelApp - JOIL
         </h3>
         <div>
             <a href="{{ route('maps-list') }}" class="btn btn-outline-secondary me-2">

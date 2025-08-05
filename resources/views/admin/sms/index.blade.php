@@ -84,7 +84,7 @@
                   <div class="mb-3">
                     <label for="message" class="form-label">Message</label>
                     <textarea class="form-control" id="message" name="message" rows="3" 
-                              placeholder="Test SMS from JoilYaseeir" required></textarea>
+                              placeholder="Test SMS from FuelApp" required></textarea>
                     <div class="form-text">Maximum 160 characters</div>
                   </div>
                 </div>

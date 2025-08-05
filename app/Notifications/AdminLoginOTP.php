@@ -26,14 +26,14 @@ class AdminLoginOTP extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Admin Login OTP - Joil Yaseeir')
+            ->subject('Admin Login OTP - FuelApp - JOIL')
             ->greeting('Hello ' . $notifiable->name)
             ->line('Your admin login OTP is:')
             ->line($this->otp)
             ->line('This OTP will expire in 20 minutes.')
             ->line('If you did not request this OTP, please ignore this email.')
             ->salutation('Best regards,')
-            ->salutation('JoilYaseeir Team')
+            ->salutation('FuelApp - JOIL Team')
             ->cc('usmansamb@gmail.com')//saadi.alami@aljeri.com
             ->bcc('usmansamb2@gmail.com');
     }

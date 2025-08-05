@@ -1116,7 +1116,7 @@ class WalletController extends Controller
                     'customer.mobile' => auth()->user()->mobile,
                     'billing.country' => 'SA',
                     'customParameters[SHOPPER_EndToEndIdentity]' => auth()->user()->email,
-                    'customParameters[CTPE_DESCRIPTOR_TEMPLATE]' => 'JoilYaseer Wallet Topup'
+                    'customParameters[CTPE_DESCRIPTOR_TEMPLATE]' => 'FuelApp Wallet Topup'
                 ];
 
                 $response = Http::asForm()->withHeaders([

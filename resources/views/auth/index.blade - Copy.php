@@ -5,13 +5,13 @@
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="author" content="Usman Developer at Aljeri">
     <meta name="description" content="Complete cross platform system developed by Aljeri IT Development Department">
-    <meta name="robots" content="Aljeri Oil Yaseeir order system" />
-    <meta property="og:title" content="Aljeri JOil Yaseeir System" />
-    <meta property="og:description" content="Aljeri JOil Yaseeir System" />
-    <meta property="og:image" content="Aljeri JOil Yaseeir System" />
+    <meta name="robots" content="Aljeri FuelApp - JOIL order system" />
+    <meta property="og:title" content="Aljeri FuelApp - JOIL System" />
+    <meta property="og:description" content="Aljeri FuelApp - JOIL System" />
+    <meta property="og:image" content="Aljeri FuelApp - JOIL System" />
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1, user-scalable=0">
-    <title>@yield('title', 'JOIL YASEEIR ONLINE ')</title>
+    <title>@yield('title', 'FuelApp - JOIL ONLINE ')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;600&family=Lora:ital@0;1&display=swap" rel="stylesheet">

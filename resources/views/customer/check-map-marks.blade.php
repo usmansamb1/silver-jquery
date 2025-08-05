@@ -1,6 +1,6 @@
 @extends('layouts.app-minimal')
 
-@section('title', __('Find Nearest Station') . ' - JOIL YASEEIR')
+@section('title', __('Find Nearest Station') . ' - FuelApp - JOIL')
 
 @section('content')
 <div class="container-fluid px-0">

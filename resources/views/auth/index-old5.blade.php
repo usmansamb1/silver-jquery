@@ -5,10 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="author" content="Usman Developer at Aljeri">
     <meta name="description" content="Complete cross platform system">
-    <meta name="robots" content="Aljeri Oil Yaseeir order system" />
-    <meta property="og:title" content="Aljeri Oil Yaseeir System" />
-    <meta property="og:description" content="Aljeri Oil Yaseeir System" />
-    <meta property="og:image" content="Aljeri Oil Yaseeir System" />
+    <meta name="robots" content="Aljeri FuelApp - JOIL order system" />
+    <meta property="og:title" content="Aljeri FuelApp - JOIL System" />
+    <meta property="og:description" content="Aljeri FuelApp - JOIL System" />
+    <meta property="og:image" content="Aljeri FuelApp - JOIL System" />
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1, user-scalable=0">
 
@@ -46,7 +46,7 @@
 
         <!-- <link rel="stylesheet" href="{{ asset('theme_files/css/post-3583.css') }}"> -->
 
-        <title>Yaseeir - JOIL by Al Jeri </title>
+        <title>FuelApp by JOIL </title>
         <style>
             .disabled {
                 pointer-events: none;
